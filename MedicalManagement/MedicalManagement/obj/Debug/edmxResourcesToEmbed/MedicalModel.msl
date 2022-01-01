@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MEDICALCOMPANYModelStoreContainer" CdmEntityContainer="MEDICALCOMPANYEntities">
+    <EntitySetMapping Name="userLogins">
+      <EntityTypeMapping TypeName="MEDICALCOMPANYModel.userLogin">
+        <MappingFragment StoreEntitySet="userLogin">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="userPass" ColumnName="userPass" />
+          <ScalarProperty Name="userType" ColumnName="userType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="LoginDelete" FunctionName="MEDICALCOMPANYModel.Store.LoginDelete" />
+    <FunctionImportMapping FunctionImportName="LoginInsert" FunctionName="MEDICALCOMPANYModel.Store.LoginInsert" />
+    <FunctionImportMapping FunctionImportName="LoginShowData" FunctionName="MEDICALCOMPANYModel.Store.LoginShowData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MEDICALCOMPANYModel.LoginShowData_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="userPass" ColumnName="userPass" />
+          <ScalarProperty Name="userType" ColumnName="userType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoginUpdate" FunctionName="MEDICALCOMPANYModel.Store.LoginUpdate" />
+  </EntityContainerMapping>
+</Mapping>

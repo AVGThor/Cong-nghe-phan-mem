@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MEDICALCOMPANYModelStoreContainer" CdmEntityContainer="MEDICALCOMPANYEntities">
+    <EntitySetMapping Name="EXPORTs">
+      <EntityTypeMapping TypeName="MEDICALCOMPANYModel.EXPORT">
+        <MappingFragment StoreEntitySet="EXPORT">
+          <ScalarProperty Name="EXPORT_ID" ColumnName="EXPORT_ID" />
+          <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+          <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+          <ScalarProperty Name="EXPORT_DATE" ColumnName="EXPORT_DATE" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="DELIVERY_STATUS" ColumnName="DELIVERY_STATUS" />
+          <ScalarProperty Name="PAYMENT_STATUS" ColumnName="PAYMENT_STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IMPORTs">
+      <EntityTypeMapping TypeName="MEDICALCOMPANYModel.IMPORT">
+        <MappingFragment StoreEntitySet="IMPORT">
+          <ScalarProperty Name="IMPORT_ID" ColumnName="IMPORT_ID" />
+          <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+          <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+          <ScalarProperty Name="IMPORT_DATE" ColumnName="IMPORT_DATE" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTs">
+      <EntityTypeMapping TypeName="MEDICALCOMPANYModel.PRODUCT">
+        <MappingFragment StoreEntitySet="PRODUCT">
+          <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+          <ScalarProperty Name="PRO_NAME" ColumnName="PRO_NAME" />
+          <ScalarProperty Name="SALEPRICE" ColumnName="SALEPRICE" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Temp_EXPORT">
+      <EntityTypeMapping TypeName="MEDICALCOMPANYModel.Temp_EXPORT">
+        <MappingFragment StoreEntitySet="Temp_EXPORT">
+          <ScalarProperty Name="EXPORT_ID" ColumnName="EXPORT_ID" />
+          <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+          <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+          <ScalarProperty Name="EXPORT_DATE" ColumnName="EXPORT_DATE" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="DELIVERY_STATUS" ColumnName="DELIVERY_STATUS" />
+          <ScalarProperty Name="PAYMENT_STATUS" ColumnName="PAYMENT_STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Temp_IMPORT">
+      <EntityTypeMapping TypeName="MEDICALCOMPANYModel.Temp_IMPORT">
+        <MappingFragment StoreEntitySet="Temp_IMPORT">
+          <ScalarProperty Name="IMPORT_ID" ColumnName="IMPORT_ID" />
+          <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+          <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+          <ScalarProperty Name="IMPORT_DATE" ColumnName="IMPORT_DATE" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DELETE_EXPORT_ORDER" FunctionName="MEDICALCOMPANYModel.Store.DELETE_EXPORT_ORDER" />
+    <FunctionImportMapping FunctionImportName="DELETE_IMPORT_ORDER" FunctionName="MEDICALCOMPANYModel.Store.DELETE_IMPORT_ORDER" />
+    <FunctionImportMapping FunctionImportName="delTempExportValue" FunctionName="MEDICALCOMPANYModel.Store.delTempExportValue" />
+    <FunctionImportMapping FunctionImportName="delTempImportValue" FunctionName="MEDICALCOMPANYModel.Store.delTempImportValue" />
+    <FunctionImportMapping FunctionImportName="EXPORT_ORDER" FunctionName="MEDICALCOMPANYModel.Store.EXPORT_ORDER" />
+    <FunctionImportMapping FunctionImportName="IMPORT_ORDER" FunctionName="MEDICALCOMPANYModel.Store.IMPORT_ORDER" />
+    <FunctionImportMapping FunctionImportName="showEXPORT" FunctionName="MEDICALCOMPANYModel.Store.showEXPORT">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MEDICALCOMPANYModel.showEXPORT_Result">
+          <ScalarProperty Name="EXPORT_ID" ColumnName="EXPORT_ID" />
+          <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+          <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+          <ScalarProperty Name="EXPORT_DATE" ColumnName="EXPORT_DATE" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="DELIVERY_STATUS" ColumnName="DELIVERY_STATUS" />
+          <ScalarProperty Name="PAYMENT_STATUS" ColumnName="PAYMENT_STATUS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="showIMPORT" FunctionName="MEDICALCOMPANYModel.Store.showIMPORT">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MEDICALCOMPANYModel.showIMPORT_Result">
+          <ScalarProperty Name="IMPORT_ID" ColumnName="IMPORT_ID" />
+          <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+          <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+          <ScalarProperty Name="IMPORT_DATE" ColumnName="IMPORT_DATE" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="showTempEXPORT" FunctionName="MEDICALCOMPANYModel.Store.showTempEXPORT">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MEDICALCOMPANYModel.showTempEXPORT_Result">
+          <ScalarProperty Name="EXPORT_ID" ColumnName="EXPORT_ID" />
+          <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+          <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+          <ScalarProperty Name="EXPORT_DATE" ColumnName="EXPORT_DATE" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="DELIVERY_STATUS" ColumnName="DELIVERY_STATUS" />
+          <ScalarProperty Name="PAYMENT_STATUS" ColumnName="PAYMENT_STATUS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="showTempIMPORT" FunctionName="MEDICALCOMPANYModel.Store.showTempIMPORT">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MEDICALCOMPANYModel.showTempIMPORT_Result">
+          <ScalarProperty Name="IMPORT_ID" ColumnName="IMPORT_ID" />
+          <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+          <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+          <ScalarProperty Name="IMPORT_DATE" ColumnName="IMPORT_DATE" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UPDATE_EXPORT_ORDER" FunctionName="MEDICALCOMPANYModel.Store.UPDATE_EXPORT_ORDER" />
+    <FunctionImportMapping FunctionImportName="UPDATE_IMPORT_ORDER" FunctionName="MEDICALCOMPANYModel.Store.UPDATE_IMPORT_ORDER" />
+  </EntityContainerMapping>
+</Mapping>

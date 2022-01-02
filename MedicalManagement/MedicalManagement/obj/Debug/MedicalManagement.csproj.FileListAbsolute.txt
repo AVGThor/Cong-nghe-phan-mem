@@ -23,14 +23,14 @@ C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\bin\Debug\En
 C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\bin\Debug\EntityFramework.xml
 C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.csproj.AssemblyReference.cache
 C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.AdminForm.resources
+C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.ExportForm.resources
 C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.Form1.resources
+C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.ImportForm.resources
 C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.Properties.Resources.resources
-C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.RegistrationForm.resources
-C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.UserForm.resources
 C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.csproj.GenerateResource.cache
 C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.csproj.CoreCompileInputs.cache
 C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.csproj.CopyComplete
 C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.exe
 C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.pdb
+C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.csproj.AssemblyReference.cache

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9b327987889f4ec8b2fae43c175b274f" Name="Diagram1">
+        <EntityTypeShape EntityType="MEDICALCOMPANYModel.EXPORT" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MEDICALCOMPANYModel.IMPORT" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MEDICALCOMPANYModel.PRODUCT" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MEDICALCOMPANYModel.Temp_EXPORT" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MEDICALCOMPANYModel.Temp_IMPORT" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <AssociationConnector Association="MEDICALCOMPANYModel.FK__EXPORT__PRO_ID__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="MEDICALCOMPANYModel.FK__IMPORT__PRO_ID__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="MEDICALCOMPANYModel.FK__Temp_EXPO__PRO_I__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="MEDICALCOMPANYModel.FK__Temp_IMPO__PRO_I__29572725" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

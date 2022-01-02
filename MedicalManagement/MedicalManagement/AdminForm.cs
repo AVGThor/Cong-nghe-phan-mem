@@ -17,10 +17,16 @@ namespace MedicalManagement
             InitializeComponent();
         }
 
-        private void btn_manageAccount_Click(object sender, EventArgs e)
+        private void goodsReceivedBtn_Click(object sender, EventArgs e)
         {
-            RegistrationForm reg = new RegistrationForm();
-            reg.Show();
+            ImportForm import = new ImportForm();
+            import.Show();
+        }
+
+        private void goodsDeliveryBtn_Click(object sender, EventArgs e)
+        {
+            ExportForm export = new ExportForm();
+            export.Show();
         }
     }
 }

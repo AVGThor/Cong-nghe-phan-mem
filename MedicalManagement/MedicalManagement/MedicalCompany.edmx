@@ -1,0 +1,560 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MEDICALCOMPANYModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EXPORT">
+          <Key>
+            <PropertyRef Name="EXPORT_ID" />
+          </Key>
+          <Property Name="EXPORT_ID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PRO_ID" Type="varchar" MaxLength="10" />
+          <Property Name="PRODUCT_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="EXPORT_DATE" Type="date" />
+          <Property Name="QUANTITY" Type="int" />
+          <Property Name="PRICE" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="DELIVERY_STATUS" Type="nvarchar" MaxLength="30" />
+          <Property Name="PAYMENT_STATUS" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="IMPORT">
+          <Key>
+            <PropertyRef Name="IMPORT_ID" />
+          </Key>
+          <Property Name="IMPORT_ID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PRO_ID" Type="varchar" MaxLength="10" />
+          <Property Name="PRODUCT_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="IMPORT_DATE" Type="date" />
+          <Property Name="PRICE" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="QUANTITY" Type="int" />
+        </EntityType>
+        <EntityType Name="PRODUCT">
+          <Key>
+            <PropertyRef Name="PRO_ID" />
+          </Key>
+          <Property Name="PRO_ID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PRO_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="SALEPRICE" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="QUANTITY" Type="int" />
+        </EntityType>
+        <EntityType Name="Temp_EXPORT">
+          <Key>
+            <PropertyRef Name="EXPORT_ID" />
+          </Key>
+          <Property Name="EXPORT_ID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PRO_ID" Type="varchar" MaxLength="10" />
+          <Property Name="PRODUCT_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="EXPORT_DATE" Type="date" />
+          <Property Name="QUANTITY" Type="int" />
+          <Property Name="PRICE" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="DELIVERY_STATUS" Type="nvarchar" MaxLength="30" />
+          <Property Name="PAYMENT_STATUS" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Temp_IMPORT">
+          <Key>
+            <PropertyRef Name="IMPORT_ID" />
+          </Key>
+          <Property Name="IMPORT_ID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PRO_ID" Type="varchar" MaxLength="10" />
+          <Property Name="PRODUCT_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="IMPORT_DATE" Type="date" />
+          <Property Name="PRICE" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="QUANTITY" Type="int" />
+        </EntityType>
+        <Association Name="FK__EXPORT__PRO_ID__2C3393D0">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
+          <End Role="EXPORT" Type="Self.EXPORT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRO_ID" />
+            </Principal>
+            <Dependent Role="EXPORT">
+              <PropertyRef Name="PRO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__IMPORT__PRO_ID__267ABA7A">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
+          <End Role="IMPORT" Type="Self.IMPORT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRO_ID" />
+            </Principal>
+            <Dependent Role="IMPORT">
+              <PropertyRef Name="PRO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Temp_EXPO__PRO_I__2F10007B">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
+          <End Role="Temp_EXPORT" Type="Self.Temp_EXPORT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRO_ID" />
+            </Principal>
+            <Dependent Role="Temp_EXPORT">
+              <PropertyRef Name="PRO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Temp_IMPO__PRO_I__29572725">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
+          <End Role="Temp_IMPORT" Type="Self.Temp_IMPORT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRO_ID" />
+            </Principal>
+            <Dependent Role="Temp_IMPORT">
+              <PropertyRef Name="PRO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="DELETE_EXPORT_ORDER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="DELETE_IMPORT_ORDER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="delTempExportValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="delTempImportValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="EXPORT_ORDER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EID" Type="varchar" Mode="In" />
+          <Parameter Name="Pro_id" Type="varchar" Mode="In" />
+          <Parameter Name="pro_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="EDATE" Type="date" Mode="In" />
+          <Parameter Name="QUANTITY" Type="int" Mode="In" />
+          <Parameter Name="PRICE" Type="decimal" Mode="In" />
+          <Parameter Name="deliver_status" Type="nvarchar" Mode="In" />
+          <Parameter Name="payment_status" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="IMPORT_ORDER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IID" Type="varchar" Mode="In" />
+          <Parameter Name="Pro_id" Type="varchar" Mode="In" />
+          <Parameter Name="pro_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="IDATE" Type="date" Mode="In" />
+          <Parameter Name="PRICE" Type="decimal" Mode="In" />
+          <Parameter Name="QUANTITY" Type="int" Mode="In" />
+        </Function>
+        <Function Name="showEXPORT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="showIMPORT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="showTempEXPORT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="showTempIMPORT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UPDATE_EXPORT_ORDER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EID" Type="varchar" Mode="In" />
+          <Parameter Name="Pro_id" Type="varchar" Mode="In" />
+          <Parameter Name="pro_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="EDATE" Type="date" Mode="In" />
+          <Parameter Name="QUANTITY" Type="int" Mode="In" />
+          <Parameter Name="PRICE" Type="decimal" Mode="In" />
+          <Parameter Name="deliver_status" Type="nvarchar" Mode="In" />
+          <Parameter Name="payment_status" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="UPDATE_IMPORT_ORDER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IID" Type="varchar" Mode="In" />
+          <Parameter Name="Pro_id" Type="varchar" Mode="In" />
+          <Parameter Name="pro_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="IDATE" Type="date" Mode="In" />
+          <Parameter Name="PRICE" Type="decimal" Mode="In" />
+          <Parameter Name="QUANTITY" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="MEDICALCOMPANYModelStoreContainer">
+          <EntitySet Name="EXPORT" EntityType="Self.EXPORT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IMPORT" EntityType="Self.IMPORT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCT" EntityType="Self.PRODUCT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Temp_EXPORT" EntityType="Self.Temp_EXPORT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Temp_IMPORT" EntityType="Self.Temp_IMPORT" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__EXPORT__PRO_ID__2C3393D0" Association="Self.FK__EXPORT__PRO_ID__2C3393D0">
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+            <End Role="EXPORT" EntitySet="EXPORT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__IMPORT__PRO_ID__267ABA7A" Association="Self.FK__IMPORT__PRO_ID__267ABA7A">
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+            <End Role="IMPORT" EntitySet="IMPORT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Temp_EXPO__PRO_I__2F10007B" Association="Self.FK__Temp_EXPO__PRO_I__2F10007B">
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+            <End Role="Temp_EXPORT" EntitySet="Temp_EXPORT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Temp_IMPO__PRO_I__29572725" Association="Self.FK__Temp_IMPO__PRO_I__29572725">
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+            <End Role="Temp_IMPORT" EntitySet="Temp_IMPORT" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MEDICALCOMPANYModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EXPORT">
+          <Key>
+            <PropertyRef Name="EXPORT_ID" />
+          </Key>
+          <Property Name="EXPORT_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRO_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PRODUCT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EXPORT_DATE" Type="DateTime" Precision="0" />
+          <Property Name="QUANTITY" Type="Int32" />
+          <Property Name="PRICE" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="DELIVERY_STATUS" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PAYMENT_STATUS" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__EXPORT__PRO_ID__2C3393D0" FromRole="EXPORT" ToRole="PRODUCT" />
+        </EntityType>
+        <EntityType Name="IMPORT">
+          <Key>
+            <PropertyRef Name="IMPORT_ID" />
+          </Key>
+          <Property Name="IMPORT_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRO_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PRODUCT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IMPORT_DATE" Type="DateTime" Precision="0" />
+          <Property Name="PRICE" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="QUANTITY" Type="Int32" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__IMPORT__PRO_ID__267ABA7A" FromRole="IMPORT" ToRole="PRODUCT" />
+        </EntityType>
+        <EntityType Name="PRODUCT">
+          <Key>
+            <PropertyRef Name="PRO_ID" />
+          </Key>
+          <Property Name="PRO_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRO_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SALEPRICE" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="QUANTITY" Type="Int32" />
+          <NavigationProperty Name="EXPORTs" Relationship="Self.FK__EXPORT__PRO_ID__2C3393D0" FromRole="PRODUCT" ToRole="EXPORT" />
+          <NavigationProperty Name="IMPORTs" Relationship="Self.FK__IMPORT__PRO_ID__267ABA7A" FromRole="PRODUCT" ToRole="IMPORT" />
+          <NavigationProperty Name="Temp_EXPORT" Relationship="Self.FK__Temp_EXPO__PRO_I__2F10007B" FromRole="PRODUCT" ToRole="Temp_EXPORT" />
+          <NavigationProperty Name="Temp_IMPORT" Relationship="Self.FK__Temp_IMPO__PRO_I__29572725" FromRole="PRODUCT" ToRole="Temp_IMPORT" />
+        </EntityType>
+        <EntityType Name="Temp_EXPORT">
+          <Key>
+            <PropertyRef Name="EXPORT_ID" />
+          </Key>
+          <Property Name="EXPORT_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRO_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PRODUCT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EXPORT_DATE" Type="DateTime" Precision="0" />
+          <Property Name="QUANTITY" Type="Int32" />
+          <Property Name="PRICE" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="DELIVERY_STATUS" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PAYMENT_STATUS" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__Temp_EXPO__PRO_I__2F10007B" FromRole="Temp_EXPORT" ToRole="PRODUCT" />
+        </EntityType>
+        <EntityType Name="Temp_IMPORT">
+          <Key>
+            <PropertyRef Name="IMPORT_ID" />
+          </Key>
+          <Property Name="IMPORT_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRO_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PRODUCT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IMPORT_DATE" Type="DateTime" Precision="0" />
+          <Property Name="PRICE" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="QUANTITY" Type="Int32" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__Temp_IMPO__PRO_I__29572725" FromRole="Temp_IMPORT" ToRole="PRODUCT" />
+        </EntityType>
+        <Association Name="FK__EXPORT__PRO_ID__2C3393D0">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
+          <End Role="EXPORT" Type="Self.EXPORT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRO_ID" />
+            </Principal>
+            <Dependent Role="EXPORT">
+              <PropertyRef Name="PRO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__IMPORT__PRO_ID__267ABA7A">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
+          <End Role="IMPORT" Type="Self.IMPORT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRO_ID" />
+            </Principal>
+            <Dependent Role="IMPORT">
+              <PropertyRef Name="PRO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Temp_EXPO__PRO_I__2F10007B">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
+          <End Role="Temp_EXPORT" Type="Self.Temp_EXPORT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRO_ID" />
+            </Principal>
+            <Dependent Role="Temp_EXPORT">
+              <PropertyRef Name="PRO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Temp_IMPO__PRO_I__29572725">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
+          <End Role="Temp_IMPORT" Type="Self.Temp_IMPORT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRO_ID" />
+            </Principal>
+            <Dependent Role="Temp_IMPORT">
+              <PropertyRef Name="PRO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MEDICALCOMPANYEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EXPORTs" EntityType="Self.EXPORT" />
+          <EntitySet Name="IMPORTs" EntityType="Self.IMPORT" />
+          <EntitySet Name="PRODUCTs" EntityType="Self.PRODUCT" />
+          <EntitySet Name="Temp_EXPORT" EntityType="Self.Temp_EXPORT" />
+          <EntitySet Name="Temp_IMPORT" EntityType="Self.Temp_IMPORT" />
+          <AssociationSet Name="FK__EXPORT__PRO_ID__2C3393D0" Association="Self.FK__EXPORT__PRO_ID__2C3393D0">
+            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+            <End Role="EXPORT" EntitySet="EXPORTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__IMPORT__PRO_ID__267ABA7A" Association="Self.FK__IMPORT__PRO_ID__267ABA7A">
+            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+            <End Role="IMPORT" EntitySet="IMPORTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Temp_EXPO__PRO_I__2F10007B" Association="Self.FK__Temp_EXPO__PRO_I__2F10007B">
+            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+            <End Role="Temp_EXPORT" EntitySet="Temp_EXPORT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Temp_IMPO__PRO_I__29572725" Association="Self.FK__Temp_IMPO__PRO_I__29572725">
+            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+            <End Role="Temp_IMPORT" EntitySet="Temp_IMPORT" />
+          </AssociationSet>
+          <FunctionImport Name="DELETE_EXPORT_ORDER">
+            <Parameter Name="id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DELETE_IMPORT_ORDER">
+            <Parameter Name="id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="delTempExportValue" />
+          <FunctionImport Name="delTempImportValue" />
+          <FunctionImport Name="EXPORT_ORDER">
+            <Parameter Name="EID" Mode="In" Type="String" />
+            <Parameter Name="Pro_id" Mode="In" Type="String" />
+            <Parameter Name="pro_name" Mode="In" Type="String" />
+            <Parameter Name="EDATE" Mode="In" Type="DateTime" />
+            <Parameter Name="QUANTITY" Mode="In" Type="Int32" />
+            <Parameter Name="PRICE" Mode="In" Type="Decimal" />
+            <Parameter Name="deliver_status" Mode="In" Type="String" />
+            <Parameter Name="payment_status" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="IMPORT_ORDER">
+            <Parameter Name="IID" Mode="In" Type="String" />
+            <Parameter Name="Pro_id" Mode="In" Type="String" />
+            <Parameter Name="pro_name" Mode="In" Type="String" />
+            <Parameter Name="IDATE" Mode="In" Type="DateTime" />
+            <Parameter Name="PRICE" Mode="In" Type="Decimal" />
+            <Parameter Name="QUANTITY" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="showEXPORT" ReturnType="Collection(MEDICALCOMPANYModel.showEXPORT_Result)" />
+          <FunctionImport Name="showIMPORT" ReturnType="Collection(MEDICALCOMPANYModel.showIMPORT_Result)" />
+          <FunctionImport Name="showTempEXPORT" ReturnType="Collection(MEDICALCOMPANYModel.showTempEXPORT_Result)" />
+          <FunctionImport Name="showTempIMPORT" ReturnType="Collection(MEDICALCOMPANYModel.showTempIMPORT_Result)" />
+          <FunctionImport Name="UPDATE_EXPORT_ORDER">
+            <Parameter Name="EID" Mode="In" Type="String" />
+            <Parameter Name="Pro_id" Mode="In" Type="String" />
+            <Parameter Name="pro_name" Mode="In" Type="String" />
+            <Parameter Name="EDATE" Mode="In" Type="DateTime" />
+            <Parameter Name="QUANTITY" Mode="In" Type="Int32" />
+            <Parameter Name="PRICE" Mode="In" Type="Decimal" />
+            <Parameter Name="deliver_status" Mode="In" Type="String" />
+            <Parameter Name="payment_status" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UPDATE_IMPORT_ORDER">
+            <Parameter Name="IID" Mode="In" Type="String" />
+            <Parameter Name="Pro_id" Mode="In" Type="String" />
+            <Parameter Name="pro_name" Mode="In" Type="String" />
+            <Parameter Name="IDATE" Mode="In" Type="DateTime" />
+            <Parameter Name="PRICE" Mode="In" Type="Decimal" />
+            <Parameter Name="QUANTITY" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="showEXPORT_Result">
+          <Property Type="String" Name="EXPORT_ID" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="PRO_ID" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="PRODUCT_NAME" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="EXPORT_DATE" Nullable="true" />
+          <Property Type="Int32" Name="QUANTITY" Nullable="true" />
+          <Property Type="Decimal" Name="PRICE" Nullable="true" Precision="10" Scale="0" />
+          <Property Type="String" Name="DELIVERY_STATUS" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="PAYMENT_STATUS" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="showIMPORT_Result">
+          <Property Type="String" Name="IMPORT_ID" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="PRO_ID" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="PRODUCT_NAME" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="IMPORT_DATE" Nullable="true" />
+          <Property Type="Decimal" Name="PRICE" Nullable="true" Precision="10" Scale="0" />
+          <Property Type="Int32" Name="QUANTITY" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="showTempEXPORT_Result">
+          <Property Type="String" Name="EXPORT_ID" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="PRO_ID" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="PRODUCT_NAME" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="EXPORT_DATE" Nullable="true" />
+          <Property Type="Int32" Name="QUANTITY" Nullable="true" />
+          <Property Type="Decimal" Name="PRICE" Nullable="true" Precision="10" Scale="0" />
+          <Property Type="String" Name="DELIVERY_STATUS" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="PAYMENT_STATUS" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="showTempIMPORT_Result">
+          <Property Type="String" Name="IMPORT_ID" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="PRO_ID" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="PRODUCT_NAME" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="IMPORT_DATE" Nullable="true" />
+          <Property Type="Decimal" Name="PRICE" Nullable="true" Precision="10" Scale="0" />
+          <Property Type="Int32" Name="QUANTITY" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MEDICALCOMPANYModelStoreContainer" CdmEntityContainer="MEDICALCOMPANYEntities">
+          <EntitySetMapping Name="EXPORTs">
+            <EntityTypeMapping TypeName="MEDICALCOMPANYModel.EXPORT">
+              <MappingFragment StoreEntitySet="EXPORT">
+                <ScalarProperty Name="EXPORT_ID" ColumnName="EXPORT_ID" />
+                <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+                <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+                <ScalarProperty Name="EXPORT_DATE" ColumnName="EXPORT_DATE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="DELIVERY_STATUS" ColumnName="DELIVERY_STATUS" />
+                <ScalarProperty Name="PAYMENT_STATUS" ColumnName="PAYMENT_STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IMPORTs">
+            <EntityTypeMapping TypeName="MEDICALCOMPANYModel.IMPORT">
+              <MappingFragment StoreEntitySet="IMPORT">
+                <ScalarProperty Name="IMPORT_ID" ColumnName="IMPORT_ID" />
+                <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+                <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+                <ScalarProperty Name="IMPORT_DATE" ColumnName="IMPORT_DATE" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTs">
+            <EntityTypeMapping TypeName="MEDICALCOMPANYModel.PRODUCT">
+              <MappingFragment StoreEntitySet="PRODUCT">
+                <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+                <ScalarProperty Name="PRO_NAME" ColumnName="PRO_NAME" />
+                <ScalarProperty Name="SALEPRICE" ColumnName="SALEPRICE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Temp_EXPORT">
+            <EntityTypeMapping TypeName="MEDICALCOMPANYModel.Temp_EXPORT">
+              <MappingFragment StoreEntitySet="Temp_EXPORT">
+                <ScalarProperty Name="EXPORT_ID" ColumnName="EXPORT_ID" />
+                <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+                <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+                <ScalarProperty Name="EXPORT_DATE" ColumnName="EXPORT_DATE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="DELIVERY_STATUS" ColumnName="DELIVERY_STATUS" />
+                <ScalarProperty Name="PAYMENT_STATUS" ColumnName="PAYMENT_STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Temp_IMPORT">
+            <EntityTypeMapping TypeName="MEDICALCOMPANYModel.Temp_IMPORT">
+              <MappingFragment StoreEntitySet="Temp_IMPORT">
+                <ScalarProperty Name="IMPORT_ID" ColumnName="IMPORT_ID" />
+                <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+                <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+                <ScalarProperty Name="IMPORT_DATE" ColumnName="IMPORT_DATE" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DELETE_EXPORT_ORDER" FunctionName="MEDICALCOMPANYModel.Store.DELETE_EXPORT_ORDER" />
+          <FunctionImportMapping FunctionImportName="DELETE_IMPORT_ORDER" FunctionName="MEDICALCOMPANYModel.Store.DELETE_IMPORT_ORDER" />
+          <FunctionImportMapping FunctionImportName="delTempExportValue" FunctionName="MEDICALCOMPANYModel.Store.delTempExportValue" />
+          <FunctionImportMapping FunctionImportName="delTempImportValue" FunctionName="MEDICALCOMPANYModel.Store.delTempImportValue" />
+          <FunctionImportMapping FunctionImportName="EXPORT_ORDER" FunctionName="MEDICALCOMPANYModel.Store.EXPORT_ORDER" />
+          <FunctionImportMapping FunctionImportName="IMPORT_ORDER" FunctionName="MEDICALCOMPANYModel.Store.IMPORT_ORDER" />
+          <FunctionImportMapping FunctionImportName="showEXPORT" FunctionName="MEDICALCOMPANYModel.Store.showEXPORT">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MEDICALCOMPANYModel.showEXPORT_Result">
+                <ScalarProperty Name="EXPORT_ID" ColumnName="EXPORT_ID" />
+                <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+                <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+                <ScalarProperty Name="EXPORT_DATE" ColumnName="EXPORT_DATE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="DELIVERY_STATUS" ColumnName="DELIVERY_STATUS" />
+                <ScalarProperty Name="PAYMENT_STATUS" ColumnName="PAYMENT_STATUS" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="showIMPORT" FunctionName="MEDICALCOMPANYModel.Store.showIMPORT">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MEDICALCOMPANYModel.showIMPORT_Result">
+                <ScalarProperty Name="IMPORT_ID" ColumnName="IMPORT_ID" />
+                <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+                <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+                <ScalarProperty Name="IMPORT_DATE" ColumnName="IMPORT_DATE" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="showTempEXPORT" FunctionName="MEDICALCOMPANYModel.Store.showTempEXPORT">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MEDICALCOMPANYModel.showTempEXPORT_Result">
+                <ScalarProperty Name="EXPORT_ID" ColumnName="EXPORT_ID" />
+                <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+                <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+                <ScalarProperty Name="EXPORT_DATE" ColumnName="EXPORT_DATE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="DELIVERY_STATUS" ColumnName="DELIVERY_STATUS" />
+                <ScalarProperty Name="PAYMENT_STATUS" ColumnName="PAYMENT_STATUS" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="showTempIMPORT" FunctionName="MEDICALCOMPANYModel.Store.showTempIMPORT">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MEDICALCOMPANYModel.showTempIMPORT_Result">
+                <ScalarProperty Name="IMPORT_ID" ColumnName="IMPORT_ID" />
+                <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+                <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+                <ScalarProperty Name="IMPORT_DATE" ColumnName="IMPORT_DATE" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UPDATE_EXPORT_ORDER" FunctionName="MEDICALCOMPANYModel.Store.UPDATE_EXPORT_ORDER" />
+          <FunctionImportMapping FunctionImportName="UPDATE_IMPORT_ORDER" FunctionName="MEDICALCOMPANYModel.Store.UPDATE_IMPORT_ORDER" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

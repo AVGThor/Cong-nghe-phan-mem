@@ -26,6 +26,14 @@
     <Property Name="QUANTITY" Type="Int32" />
     <NavigationProperty Name="PRODUCT" Relationship="Self.FK__IMPORT__PRO_ID__267ABA7A" FromRole="IMPORT" ToRole="PRODUCT" />
   </EntityType>
+  <EntityType Name="monthRevenue">
+    <Key>
+      <PropertyRef Name="STT" />
+    </Key>
+    <Property Name="STT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SELECTED_MONTH" Type="Int32" />
+    <Property Name="REVENUE" Type="Decimal" Precision="10" Scale="0" />
+  </EntityType>
   <EntityType Name="PRODUCT">
     <Key>
       <PropertyRef Name="PRO_ID" />
@@ -116,6 +124,7 @@
   <EntityContainer Name="MEDICALCOMPANYEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="EXPORTs" EntityType="Self.EXPORT" />
     <EntitySet Name="IMPORTs" EntityType="Self.IMPORT" />
+    <EntitySet Name="monthRevenues" EntityType="Self.monthRevenue" />
     <EntitySet Name="PRODUCTs" EntityType="Self.PRODUCT" />
     <EntitySet Name="Temp_EXPORT" EntityType="Self.Temp_EXPORT" />
     <EntitySet Name="Temp_IMPORT" EntityType="Self.Temp_IMPORT" />
@@ -141,6 +150,7 @@
     <FunctionImport Name="DELETE_IMPORT_ORDER">
       <Parameter Name="id" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="delRevenueValue" />
     <FunctionImport Name="delTempExportValue" />
     <FunctionImport Name="delTempImportValue" />
     <FunctionImport Name="EXPORT_ORDER">
@@ -161,8 +171,15 @@
       <Parameter Name="PRICE" Mode="In" Type="Decimal" />
       <Parameter Name="QUANTITY" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="showEXPORT" ReturnType="Collection(MEDICALCOMPANYModel.showEXPORT_Result)" />
-    <FunctionImport Name="showIMPORT" ReturnType="Collection(MEDICALCOMPANYModel.showIMPORT_Result)" />
+    <FunctionImport Name="showEXPORT" ReturnType="Collection(MEDICALCOMPANYModel.showEXPORT_Result)">
+      <Parameter Name="month" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="showIMPORT" ReturnType="Collection(MEDICALCOMPANYModel.showIMPORT_Result)">
+      <Parameter Name="month" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="showREVENUE" ReturnType="Collection(MEDICALCOMPANYModel.showREVENUE_Result)">
+      <Parameter Name="month" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="showTempEXPORT" ReturnType="Collection(MEDICALCOMPANYModel.showTempEXPORT_Result)" />
     <FunctionImport Name="showTempIMPORT" ReturnType="Collection(MEDICALCOMPANYModel.showTempIMPORT_Result)" />
     <FunctionImport Name="UPDATE_EXPORT_ORDER">
@@ -183,6 +200,22 @@
       <Parameter Name="PRICE" Mode="In" Type="Decimal" />
       <Parameter Name="QUANTITY" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="addProduct">
+      <Parameter Name="proID" Mode="In" Type="String" />
+      <Parameter Name="proName" Mode="In" Type="String" />
+      <Parameter Name="price" Mode="In" Type="Decimal" />
+      <Parameter Name="quantity" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="deleteProduct">
+      <Parameter Name="id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="updateProduct">
+      <Parameter Name="proId" Mode="In" Type="String" />
+      <Parameter Name="proName" Mode="In" Type="String" />
+      <Parameter Name="PRICE" Mode="In" Type="Decimal" />
+      <Parameter Name="QUANTITY" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="showProduct" ReturnType="Collection(MEDICALCOMPANYModel.showProduct_Result)" />
   </EntityContainer>
   <ComplexType Name="showEXPORT_Result">
     <Property Type="String" Name="EXPORT_ID" Nullable="false" MaxLength="10" />
@@ -202,6 +235,11 @@
     <Property Type="Decimal" Name="PRICE" Nullable="true" Precision="10" Scale="0" />
     <Property Type="Int32" Name="QUANTITY" Nullable="true" />
   </ComplexType>
+  <ComplexType Name="showREVENUE_Result">
+    <Property Type="Int32" Name="STT" Nullable="false" />
+    <Property Type="Int32" Name="SELECTED_MONTH" Nullable="true" />
+    <Property Type="Decimal" Name="REVENUE" Nullable="true" Precision="10" Scale="0" />
+  </ComplexType>
   <ComplexType Name="showTempEXPORT_Result">
     <Property Type="String" Name="EXPORT_ID" Nullable="false" MaxLength="10" />
     <Property Type="String" Name="PRO_ID" Nullable="true" MaxLength="10" />
@@ -218,6 +256,12 @@
     <Property Type="String" Name="PRODUCT_NAME" Nullable="true" MaxLength="50" />
     <Property Type="DateTime" Name="IMPORT_DATE" Nullable="true" />
     <Property Type="Decimal" Name="PRICE" Nullable="true" Precision="10" Scale="0" />
+    <Property Type="Int32" Name="QUANTITY" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="showProduct_Result">
+    <Property Type="String" Name="PRO_ID" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="PRO_NAME" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="SALEPRICE" Nullable="true" Precision="10" Scale="0" />
     <Property Type="Int32" Name="QUANTITY" Nullable="true" />
   </ComplexType>
 </Schema>

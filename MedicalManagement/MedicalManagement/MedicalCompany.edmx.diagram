@@ -4,9 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9b327987889f4ec8b2fae43c175b274f" Name="Diagram1">
+      <Diagram DiagramId="6ba39c12b41d4dceb67ef038490568d0" Name="Diagram1">
         <EntityTypeShape EntityType="MEDICALCOMPANYModel.EXPORT" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MEDICALCOMPANYModel.IMPORT" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MEDICALCOMPANYModel.monthRevenue" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MEDICALCOMPANYModel.PRODUCT" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MEDICALCOMPANYModel.Temp_EXPORT" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MEDICALCOMPANYModel.Temp_IMPORT" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />

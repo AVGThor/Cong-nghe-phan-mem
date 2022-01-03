@@ -52,3 +52,5 @@ C:\Users\HP\Downloads\Cong-nghe-phan-mem-main\Cong-nghe-phan-mem-main\MedicalMan
 C:\Users\HP\Downloads\Cong-nghe-phan-mem-main\Cong-nghe-phan-mem-main\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.csproj.CopyComplete
 C:\Users\HP\Downloads\Cong-nghe-phan-mem-main\Cong-nghe-phan-mem-main\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.exe
 C:\Users\HP\Downloads\Cong-nghe-phan-mem-main\Cong-nghe-phan-mem-main\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.pdb
+C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.Statistics.resources
+C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.ProductManagement.resources

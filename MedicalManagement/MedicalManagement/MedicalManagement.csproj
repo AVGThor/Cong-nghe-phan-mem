@@ -100,8 +100,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MedicalCompany.edmx</DependentUpon>
     </Compile>
+    <Compile Include="monthRevenue.cs">
+      <DependentUpon>MedicalCompany.tt</DependentUpon>
+    </Compile>
     <Compile Include="PRODUCT.cs">
       <DependentUpon>MedicalCompany.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductManagement.Designer.cs">
+      <DependentUpon>ProductManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,11 +120,23 @@
     <Compile Include="showIMPORT_Result.cs">
       <DependentUpon>MedicalCompany.tt</DependentUpon>
     </Compile>
+    <Compile Include="showProduct_Result.cs">
+      <DependentUpon>MedicalCompany.tt</DependentUpon>
+    </Compile>
+    <Compile Include="showREVENUE_Result.cs">
+      <DependentUpon>MedicalCompany.tt</DependentUpon>
+    </Compile>
     <Compile Include="showTempEXPORT_Result.cs">
       <DependentUpon>MedicalCompany.tt</DependentUpon>
     </Compile>
     <Compile Include="showTempIMPORT_Result.cs">
       <DependentUpon>MedicalCompany.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Statistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistics.Designer.cs">
+      <DependentUpon>Statistics.cs</DependentUpon>
     </Compile>
     <Compile Include="Temp_EXPORT.cs">
       <DependentUpon>MedicalCompany.tt</DependentUpon>
@@ -135,6 +156,9 @@
     <EmbeddedResource Include="ImportForm.resx">
       <DependentUpon>ImportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProductManagement.resx">
+      <DependentUpon>ProductManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -145,6 +169,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Statistics.resx">
+      <DependentUpon>Statistics.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="MedicalCompany.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MedicalCompany.Designer.cs</LastGenOutput>

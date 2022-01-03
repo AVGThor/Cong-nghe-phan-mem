@@ -28,5 +28,17 @@ namespace MedicalManagement
             ExportForm export = new ExportForm();
             export.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Statistics statistics = new Statistics();
+            statistics.Show();
+        }
+
+        private void productManagementBtn_Click(object sender, EventArgs e)
+        {
+            ProductManagement productManagement = new ProductManagement();
+            productManagement.Show();
+        }
     }
 }

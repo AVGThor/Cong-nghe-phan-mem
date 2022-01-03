@@ -22,13 +22,6 @@ namespace MedicalManagement
         //add function
         private void addBtn_Click(object sender, EventArgs e)
         {
-            /*db.IMPORT_ORDER(importID.Text, proID.Text, proName.Text, importDate.Value, int.Parse(price.Text), Convert.ToInt32(quantity.Value));
-            db.SaveChanges();
-            importID.Clear();
-            proID.Clear();
-            proName.Clear();
-            price.Clear();
-            this.dataShow();*/
             if(!String.IsNullOrEmpty(importID.Text))
             {
                 db.IMPORT_ORDER(importID.Text, proID.Text, proName.Text, importDate.Value, int.Parse(price.Text), Convert.ToInt32(quantity.Value));

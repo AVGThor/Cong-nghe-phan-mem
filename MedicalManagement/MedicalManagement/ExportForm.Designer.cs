@@ -147,6 +147,16 @@ namespace MedicalManagement
             // quantity
             // 
             this.quantity.Location = new System.Drawing.Point(128, 220);
+            this.quantity.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.quantity.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.quantity.Name = "quantity";
             this.quantity.Size = new System.Drawing.Size(79, 20);
             this.quantity.TabIndex = 51;

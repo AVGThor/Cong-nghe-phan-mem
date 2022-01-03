@@ -63,6 +63,14 @@ CREATE TABLE Temp_EXPORT(
 	PRIMARY KEY(EXPORT_ID)
 )
 GO
+--table chua gia tri revenue
+CREATE TABLE monthRevenue(
+	STT int identity,
+	SELECTED_MONTH INT,
+	REVENUE decimal(10,0)
+	PRIMARY KEY(STT)
+)
+--drop table monthRevenue
 
 INSERT INTO PRODUCT VALUES ('P1', 'Dong Trung Ha Thao', '800000', 100)
 INSERT INTO PRODUCT VALUES ('P2', 'Nuoc Hong Sam', '900000', 150)
@@ -123,9 +131,10 @@ GO
 
 --display import information
 CREATE PROC showIMPORT
+@month int
 AS
 BEGIN
-	SELECT * FROM IMPORT
+	SELECT * FROM IMPORT WHERE MONTH(IMPORT_DATE) = @month
 END
 GO
 
@@ -196,9 +205,10 @@ GO
 
 --display Export information
 CREATE PROC showEXPORT
+@month int
 AS
 BEGIN
-	SELECT * FROM EXPORT
+	SELECT * FROM EXPORT WHERE MONTH(EXPORT_DATE) = @month
 END
 GO
 
@@ -219,3 +229,70 @@ end
 go
 --select * from EXPORT
 --delete from EXPORT
+
+--income per month (thu nhap moi thang)
+CREATE PROC showREVENUE
+	@month int
+as
+begin
+	--select SUM(PRICE) from EXPORT where MONTH(EXPORT_DATE) = @month
+	declare @revenue decimal(10,0)
+	set @revenue = (SELECT SUM(PRICE) FROM EXPORT WHERE MONTH(EXPORT_DATE) = @month) - 
+				(SELECT SUM(PRICE) FROM IMPORT WHERE MONTH(IMPORT_DATE) = @month)
+	insert into monthRevenue values (@month, @revenue)
+	select * from monthRevenue
+end
+go
+--drop proc showREVENUE
+
+-- delete Revenue value
+create proc delRevenueValue
+as
+begin
+	DELETE FROM monthRevenue
+	dbcc checkident ('monthRevenue', RESEED, 0)
+END
+GO
+--drop proc delRevenueValue
+
+--proc to add product
+create proc addProduct
+	@proID varchar(10),
+	@proName nvarchar(50),
+	@price decimal(10,0),
+	@quantity int
+as
+begin
+	INSERT INTO PRODUCT VALUES(@proID, @proName, @price, @quantity);
+end
+go
+
+--proc update product
+CREATE PROC updateProduct
+	@proId VARCHAR(10),
+	@proName NVARCHAR(50),
+	@PRICE DECIMAL(10, 0),
+	@QUANTITY INT
+AS
+BEGIN
+	UPDATE PRODUCT SET PRO_ID = @proId, PRO_NAME = @proName, SALEPRICE = @PRICE, QUANTITY = @QUANTITY
+	WHERE PRO_ID = @proId;
+END
+GO
+
+--proc delete product
+CREATE PROC deleteProduct
+	@id varchar(10)
+as
+BEGIN
+	DELETE FROM PRODUCT WHERE PRO_ID = @id;
+END
+GO
+
+--proc show product
+create proc showProduct
+as
+begin
+	select * from PRODUCT
+end
+go

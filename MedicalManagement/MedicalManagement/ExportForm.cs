@@ -21,7 +21,7 @@ namespace MedicalManagement
         //add function
         private void addBtn_Click(object sender, EventArgs e)
         {
-            db.EXPORT_ORDER(exportID.Text, proID.Text, proName.Text, exportDate.Value, Convert.ToInt32(quantity.Value), int.Parse(price.Text), deliverStatus.Text, paymentStatus.Text);
+            /*db.EXPORT_ORDER(exportID.Text, proID.Text, proName.Text, exportDate.Value, Convert.ToInt32(quantity.Value), int.Parse(price.Text), deliverStatus.Text, paymentStatus.Text);
             db.SaveChanges();
             exportID.Clear();
             proID.Clear();
@@ -29,7 +29,23 @@ namespace MedicalManagement
             price.Clear();
             deliverStatus.Text = "";
             paymentStatus.Text = "";
-            this.dataShow();
+            this.dataShow(); */
+            if (!String.IsNullOrEmpty(exportID.Text))
+            {
+                db.EXPORT_ORDER(exportID.Text, proID.Text, proName.Text, exportDate.Value, Convert.ToInt32(quantity.Value), int.Parse(price.Text), deliverStatus.Text, paymentStatus.Text);
+                db.SaveChanges();
+                exportID.Clear();
+                proID.Clear();
+                proName.Clear();
+                price.Clear();
+                deliverStatus.Text = "";
+                paymentStatus.Text = "";
+                this.dataShow();
+            }
+            else
+            {
+                MessageBox.Show("Please input data first");
+            }
         }
 
         // display data when input

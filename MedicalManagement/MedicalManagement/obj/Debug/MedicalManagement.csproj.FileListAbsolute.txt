@@ -34,3 +34,21 @@ C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\obj\Debug\Me
 C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.exe
 C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.pdb
 C:\Users\Tran Duc Huy\Downloads\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.csproj.AssemblyReference.cache
+C:\Users\HP\Downloads\Cong-nghe-phan-mem-main\Cong-nghe-phan-mem-main\MedicalManagement\MedicalManagement\bin\Debug\MedicalManagement.exe.config
+C:\Users\HP\Downloads\Cong-nghe-phan-mem-main\Cong-nghe-phan-mem-main\MedicalManagement\MedicalManagement\bin\Debug\MedicalManagement.exe
+C:\Users\HP\Downloads\Cong-nghe-phan-mem-main\Cong-nghe-phan-mem-main\MedicalManagement\MedicalManagement\bin\Debug\MedicalManagement.pdb
+C:\Users\HP\Downloads\Cong-nghe-phan-mem-main\Cong-nghe-phan-mem-main\MedicalManagement\MedicalManagement\bin\Debug\EntityFramework.dll
+C:\Users\HP\Downloads\Cong-nghe-phan-mem-main\Cong-nghe-phan-mem-main\MedicalManagement\MedicalManagement\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\HP\Downloads\Cong-nghe-phan-mem-main\Cong-nghe-phan-mem-main\MedicalManagement\MedicalManagement\bin\Debug\EntityFramework.xml
+C:\Users\HP\Downloads\Cong-nghe-phan-mem-main\Cong-nghe-phan-mem-main\MedicalManagement\MedicalManagement\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\HP\Downloads\Cong-nghe-phan-mem-main\Cong-nghe-phan-mem-main\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.csproj.AssemblyReference.cache
+C:\Users\HP\Downloads\Cong-nghe-phan-mem-main\Cong-nghe-phan-mem-main\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.AdminForm.resources
+C:\Users\HP\Downloads\Cong-nghe-phan-mem-main\Cong-nghe-phan-mem-main\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.ExportForm.resources
+C:\Users\HP\Downloads\Cong-nghe-phan-mem-main\Cong-nghe-phan-mem-main\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.Form1.resources
+C:\Users\HP\Downloads\Cong-nghe-phan-mem-main\Cong-nghe-phan-mem-main\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.ImportForm.resources
+C:\Users\HP\Downloads\Cong-nghe-phan-mem-main\Cong-nghe-phan-mem-main\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.Properties.Resources.resources
+C:\Users\HP\Downloads\Cong-nghe-phan-mem-main\Cong-nghe-phan-mem-main\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.csproj.GenerateResource.cache
+C:\Users\HP\Downloads\Cong-nghe-phan-mem-main\Cong-nghe-phan-mem-main\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.csproj.CoreCompileInputs.cache
+C:\Users\HP\Downloads\Cong-nghe-phan-mem-main\Cong-nghe-phan-mem-main\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.csproj.CopyComplete
+C:\Users\HP\Downloads\Cong-nghe-phan-mem-main\Cong-nghe-phan-mem-main\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.exe
+C:\Users\HP\Downloads\Cong-nghe-phan-mem-main\Cong-nghe-phan-mem-main\MedicalManagement\MedicalManagement\obj\Debug\MedicalManagement.pdb

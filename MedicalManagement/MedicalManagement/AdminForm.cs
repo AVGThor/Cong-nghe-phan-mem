@@ -40,5 +40,11 @@ namespace MedicalManagement
             ProductManagement productManagement = new ProductManagement();
             productManagement.Show();
         }
+
+        private void agentBtn_Click(object sender, EventArgs e)
+        {
+            AgentList agentList = new AgentList();
+            agentList.Show();
+        }
     }
 }

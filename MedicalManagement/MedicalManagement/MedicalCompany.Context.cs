@@ -27,12 +27,36 @@ namespace MedicalManagement
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Accountant> Accountants { get; set; }
+        public virtual DbSet<Admin> Admins { get; set; }
+        public virtual DbSet<Agent> Agents { get; set; }
         public virtual DbSet<EXPORT> EXPORTs { get; set; }
         public virtual DbSet<IMPORT> IMPORTs { get; set; }
         public virtual DbSet<monthRevenue> monthRevenues { get; set; }
         public virtual DbSet<PRODUCT> PRODUCTs { get; set; }
         public virtual DbSet<Temp_EXPORT> Temp_EXPORT { get; set; }
         public virtual DbSet<Temp_IMPORT> Temp_IMPORT { get; set; }
+    
+        public virtual int addProduct(string proID, string proName, Nullable<decimal> price, Nullable<int> quantity)
+        {
+            var proIDParameter = proID != null ?
+                new ObjectParameter("proID", proID) :
+                new ObjectParameter("proID", typeof(string));
+    
+            var proNameParameter = proName != null ?
+                new ObjectParameter("proName", proName) :
+                new ObjectParameter("proName", typeof(string));
+    
+            var priceParameter = price.HasValue ?
+                new ObjectParameter("price", price) :
+                new ObjectParameter("price", typeof(decimal));
+    
+            var quantityParameter = quantity.HasValue ?
+                new ObjectParameter("quantity", quantity) :
+                new ObjectParameter("quantity", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addProduct", proIDParameter, proNameParameter, priceParameter, quantityParameter);
+        }
     
         public virtual int DELETE_EXPORT_ORDER(string id)
         {
@@ -52,6 +76,15 @@ namespace MedicalManagement
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETE_IMPORT_ORDER", idParameter);
         }
     
+        public virtual int deleteProduct(string id)
+        {
+            var idParameter = id != null ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("deleteProduct", idParameter);
+        }
+    
         public virtual int delRevenueValue()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("delRevenueValue");
@@ -67,7 +100,7 @@ namespace MedicalManagement
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("delTempImportValue");
         }
     
-        public virtual int EXPORT_ORDER(string eID, string pro_id, string pro_name, Nullable<System.DateTime> eDATE, Nullable<int> qUANTITY, Nullable<decimal> pRICE, string deliver_status, string payment_status)
+        public virtual int EXPORT_ORDER(string eID, string pro_id, string pro_name, string agent_id, Nullable<System.DateTime> eDATE, Nullable<int> qUANTITY, Nullable<decimal> pRICE, string deliver_status, string payment_status)
         {
             var eIDParameter = eID != null ?
                 new ObjectParameter("EID", eID) :
@@ -80,6 +113,10 @@ namespace MedicalManagement
             var pro_nameParameter = pro_name != null ?
                 new ObjectParameter("pro_name", pro_name) :
                 new ObjectParameter("pro_name", typeof(string));
+    
+            var agent_idParameter = agent_id != null ?
+                new ObjectParameter("agent_id", agent_id) :
+                new ObjectParameter("agent_id", typeof(string));
     
             var eDATEParameter = eDATE.HasValue ?
                 new ObjectParameter("EDATE", eDATE) :
@@ -101,7 +138,7 @@ namespace MedicalManagement
                 new ObjectParameter("payment_status", payment_status) :
                 new ObjectParameter("payment_status", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EXPORT_ORDER", eIDParameter, pro_idParameter, pro_nameParameter, eDATEParameter, qUANTITYParameter, pRICEParameter, deliver_statusParameter, payment_statusParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EXPORT_ORDER", eIDParameter, pro_idParameter, pro_nameParameter, agent_idParameter, eDATEParameter, qUANTITYParameter, pRICEParameter, deliver_statusParameter, payment_statusParameter);
         }
     
         public virtual int IMPORT_ORDER(string iID, string pro_id, string pro_name, Nullable<System.DateTime> iDATE, Nullable<decimal> pRICE, Nullable<int> qUANTITY)
@@ -151,6 +188,11 @@ namespace MedicalManagement
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<showIMPORT_Result>("showIMPORT", monthParameter);
         }
     
+        public virtual ObjectResult<showProduct_Result> showProduct()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<showProduct_Result>("showProduct");
+        }
+    
         public virtual ObjectResult<showREVENUE_Result> showREVENUE(Nullable<int> month)
         {
             var monthParameter = month.HasValue ?
@@ -170,7 +212,7 @@ namespace MedicalManagement
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<showTempIMPORT_Result>("showTempIMPORT");
         }
     
-        public virtual int UPDATE_EXPORT_ORDER(string eID, string pro_id, string pro_name, Nullable<System.DateTime> eDATE, Nullable<int> qUANTITY, Nullable<decimal> pRICE, string deliver_status, string payment_status)
+        public virtual int UPDATE_EXPORT_ORDER(string eID, string pro_id, string pro_name, string agent_id, Nullable<System.DateTime> eDATE, Nullable<int> qUANTITY, Nullable<decimal> pRICE, string deliver_status, string payment_status)
         {
             var eIDParameter = eID != null ?
                 new ObjectParameter("EID", eID) :
@@ -183,6 +225,10 @@ namespace MedicalManagement
             var pro_nameParameter = pro_name != null ?
                 new ObjectParameter("pro_name", pro_name) :
                 new ObjectParameter("pro_name", typeof(string));
+    
+            var agent_idParameter = agent_id != null ?
+                new ObjectParameter("agent_id", agent_id) :
+                new ObjectParameter("agent_id", typeof(string));
     
             var eDATEParameter = eDATE.HasValue ?
                 new ObjectParameter("EDATE", eDATE) :
@@ -204,7 +250,7 @@ namespace MedicalManagement
                 new ObjectParameter("payment_status", payment_status) :
                 new ObjectParameter("payment_status", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPDATE_EXPORT_ORDER", eIDParameter, pro_idParameter, pro_nameParameter, eDATEParameter, qUANTITYParameter, pRICEParameter, deliver_statusParameter, payment_statusParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPDATE_EXPORT_ORDER", eIDParameter, pro_idParameter, pro_nameParameter, agent_idParameter, eDATEParameter, qUANTITYParameter, pRICEParameter, deliver_statusParameter, payment_statusParameter);
         }
     
         public virtual int UPDATE_IMPORT_ORDER(string iID, string pro_id, string pro_name, Nullable<System.DateTime> iDATE, Nullable<decimal> pRICE, Nullable<int> qUANTITY)
@@ -236,36 +282,6 @@ namespace MedicalManagement
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPDATE_IMPORT_ORDER", iIDParameter, pro_idParameter, pro_nameParameter, iDATEParameter, pRICEParameter, qUANTITYParameter);
         }
     
-        public virtual int addProduct(string proID, string proName, Nullable<decimal> price, Nullable<int> quantity)
-        {
-            var proIDParameter = proID != null ?
-                new ObjectParameter("proID", proID) :
-                new ObjectParameter("proID", typeof(string));
-    
-            var proNameParameter = proName != null ?
-                new ObjectParameter("proName", proName) :
-                new ObjectParameter("proName", typeof(string));
-    
-            var priceParameter = price.HasValue ?
-                new ObjectParameter("price", price) :
-                new ObjectParameter("price", typeof(decimal));
-    
-            var quantityParameter = quantity.HasValue ?
-                new ObjectParameter("quantity", quantity) :
-                new ObjectParameter("quantity", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addProduct", proIDParameter, proNameParameter, priceParameter, quantityParameter);
-        }
-    
-        public virtual int deleteProduct(string id)
-        {
-            var idParameter = id != null ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("deleteProduct", idParameter);
-        }
-    
         public virtual int updateProduct(string proId, string proName, Nullable<decimal> pRICE, Nullable<int> qUANTITY)
         {
             var proIdParameter = proId != null ?
@@ -287,9 +303,9 @@ namespace MedicalManagement
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("updateProduct", proIdParameter, proNameParameter, pRICEParameter, qUANTITYParameter);
         }
     
-        public virtual ObjectResult<showProduct_Result> showProduct()
+        public virtual ObjectResult<showAgent_Result> showAgent()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<showProduct_Result>("showProduct");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<showAgent_Result>("showAgent");
         }
     }
 }

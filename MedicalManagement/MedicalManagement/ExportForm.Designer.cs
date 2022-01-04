@@ -51,6 +51,8 @@ namespace MedicalManagement
             this.idLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.doneBtn = new System.Windows.Forms.Button();
+            this.agentIDLabel = new System.Windows.Forms.Label();
+            this.agentID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.exportDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quantity)).BeginInit();
             this.SuspendLayout();
@@ -67,7 +69,7 @@ namespace MedicalManagement
             // 
             // deleteBtn
             // 
-            this.deleteBtn.Location = new System.Drawing.Point(223, 361);
+            this.deleteBtn.Location = new System.Drawing.Point(223, 393);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(75, 23);
             this.deleteBtn.TabIndex = 59;
@@ -77,7 +79,7 @@ namespace MedicalManagement
             // 
             // updateBtn
             // 
-            this.updateBtn.Location = new System.Drawing.Point(131, 361);
+            this.updateBtn.Location = new System.Drawing.Point(131, 393);
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(75, 23);
             this.updateBtn.TabIndex = 58;
@@ -87,7 +89,7 @@ namespace MedicalManagement
             // 
             // addBtn
             // 
-            this.addBtn.Location = new System.Drawing.Point(40, 361);
+            this.addBtn.Location = new System.Drawing.Point(40, 393);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(75, 23);
             this.addBtn.TabIndex = 57;
@@ -101,7 +103,7 @@ namespace MedicalManagement
             this.paymentStatus.Items.AddRange(new object[] {
             "UNFINISHED",
             "PAID"});
-            this.paymentStatus.Location = new System.Drawing.Point(177, 325);
+            this.paymentStatus.Location = new System.Drawing.Point(177, 357);
             this.paymentStatus.Name = "paymentStatus";
             this.paymentStatus.Size = new System.Drawing.Size(121, 21);
             this.paymentStatus.TabIndex = 56;
@@ -110,7 +112,7 @@ namespace MedicalManagement
             // 
             this.paymentLabel.AutoSize = true;
             this.paymentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.paymentLabel.Location = new System.Drawing.Point(33, 325);
+            this.paymentLabel.Location = new System.Drawing.Point(33, 357);
             this.paymentLabel.Name = "paymentLabel";
             this.paymentLabel.Size = new System.Drawing.Size(133, 22);
             this.paymentLabel.TabIndex = 55;
@@ -122,7 +124,7 @@ namespace MedicalManagement
             this.deliverStatus.Items.AddRange(new object[] {
             "DELIVERING",
             "DELIVERED"});
-            this.deliverStatus.Location = new System.Drawing.Point(177, 291);
+            this.deliverStatus.Location = new System.Drawing.Point(177, 323);
             this.deliverStatus.Name = "deliverStatus";
             this.deliverStatus.Size = new System.Drawing.Size(121, 21);
             this.deliverStatus.TabIndex = 54;
@@ -131,7 +133,7 @@ namespace MedicalManagement
             // 
             this.deliveryLabel.AutoSize = true;
             this.deliveryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.deliveryLabel.Location = new System.Drawing.Point(33, 291);
+            this.deliveryLabel.Location = new System.Drawing.Point(33, 323);
             this.deliveryLabel.Name = "deliveryLabel";
             this.deliveryLabel.Size = new System.Drawing.Size(128, 22);
             this.deliveryLabel.TabIndex = 53;
@@ -139,14 +141,14 @@ namespace MedicalManagement
             // 
             // exportDate
             // 
-            this.exportDate.Location = new System.Drawing.Point(128, 189);
+            this.exportDate.Location = new System.Drawing.Point(128, 221);
             this.exportDate.Name = "exportDate";
             this.exportDate.Size = new System.Drawing.Size(170, 20);
             this.exportDate.TabIndex = 52;
             // 
             // quantity
             // 
-            this.quantity.Location = new System.Drawing.Point(128, 220);
+            this.quantity.Location = new System.Drawing.Point(128, 252);
             this.quantity.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -171,7 +173,7 @@ namespace MedicalManagement
             // 
             this.quantityLabel.AutoSize = true;
             this.quantityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.quantityLabel.Location = new System.Drawing.Point(33, 220);
+            this.quantityLabel.Location = new System.Drawing.Point(33, 252);
             this.quantityLabel.Name = "quantityLabel";
             this.quantityLabel.Size = new System.Drawing.Size(77, 22);
             this.quantityLabel.TabIndex = 50;
@@ -179,7 +181,7 @@ namespace MedicalManagement
             // 
             // price
             // 
-            this.price.Location = new System.Drawing.Point(128, 252);
+            this.price.Location = new System.Drawing.Point(128, 284);
             this.price.Name = "price";
             this.price.Size = new System.Drawing.Size(170, 20);
             this.price.TabIndex = 49;
@@ -188,7 +190,7 @@ namespace MedicalManagement
             // 
             this.priceLabel.AutoSize = true;
             this.priceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.priceLabel.Location = new System.Drawing.Point(33, 252);
+            this.priceLabel.Location = new System.Drawing.Point(33, 284);
             this.priceLabel.Name = "priceLabel";
             this.priceLabel.Size = new System.Drawing.Size(51, 22);
             this.priceLabel.TabIndex = 48;
@@ -219,7 +221,7 @@ namespace MedicalManagement
             // 
             this.exportDateLabel.AutoSize = true;
             this.exportDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.exportDateLabel.Location = new System.Drawing.Point(33, 188);
+            this.exportDateLabel.Location = new System.Drawing.Point(33, 220);
             this.exportDateLabel.Name = "exportDateLabel";
             this.exportDateLabel.Size = new System.Drawing.Size(48, 22);
             this.exportDateLabel.TabIndex = 44;
@@ -277,11 +279,30 @@ namespace MedicalManagement
             this.doneBtn.UseVisualStyleBackColor = true;
             this.doneBtn.Click += new System.EventHandler(this.doneBtn_Click);
             // 
+            // agentIDLabel
+            // 
+            this.agentIDLabel.AutoSize = true;
+            this.agentIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.agentIDLabel.Location = new System.Drawing.Point(33, 186);
+            this.agentIDLabel.Name = "agentIDLabel";
+            this.agentIDLabel.Size = new System.Drawing.Size(79, 22);
+            this.agentIDLabel.TabIndex = 62;
+            this.agentIDLabel.Text = "Agent ID";
+            // 
+            // agentID
+            // 
+            this.agentID.Location = new System.Drawing.Point(128, 186);
+            this.agentID.Name = "agentID";
+            this.agentID.Size = new System.Drawing.Size(170, 20);
+            this.agentID.TabIndex = 63;
+            // 
             // ExportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.agentID);
+            this.Controls.Add(this.agentIDLabel);
             this.Controls.Add(this.doneBtn);
             this.Controls.Add(this.exportDataGridView);
             this.Controls.Add(this.deleteBtn);
@@ -338,5 +359,7 @@ namespace MedicalManagement
         private System.Windows.Forms.Label idLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button doneBtn;
+        private System.Windows.Forms.Label agentIDLabel;
+        private System.Windows.Forms.TextBox agentID;
     }
 }

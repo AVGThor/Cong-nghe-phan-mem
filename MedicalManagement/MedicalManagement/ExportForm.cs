@@ -23,11 +23,12 @@ namespace MedicalManagement
         {
             if (!String.IsNullOrEmpty(exportID.Text))
             {
-                db.EXPORT_ORDER(exportID.Text, proID.Text, proName.Text, exportDate.Value, Convert.ToInt32(quantity.Value), int.Parse(price.Text), deliverStatus.Text, paymentStatus.Text);
+                db.EXPORT_ORDER(exportID.Text, proID.Text, proName.Text, agentID.Text, exportDate.Value, Convert.ToInt32(quantity.Value), int.Parse(price.Text), deliverStatus.Text, paymentStatus.Text);
                 db.SaveChanges();
                 exportID.Clear();
                 proID.Clear();
                 proName.Clear();
+                agentID.Clear();
                 price.Clear();
                 deliverStatus.Text = "";
                 paymentStatus.Text = "";
@@ -56,22 +57,24 @@ namespace MedicalManagement
             exportID.Text = exportDataGridView.SelectedCells[0].Value.ToString();
             proID.Text = exportDataGridView.SelectedCells[1].Value.ToString();
             proName.Text = exportDataGridView.SelectedCells[2].Value.ToString();
-            exportDate.Value = Convert.ToDateTime(exportDataGridView.SelectedCells[3].Value.ToString());
-            quantity.Value = Convert.ToInt32(exportDataGridView.SelectedCells[4].Value.ToString());
-            price.Text = exportDataGridView.SelectedCells[5].Value.ToString();
-            deliverStatus.Text = exportDataGridView.SelectedCells[6].Value.ToString();
-            paymentStatus.Text = exportDataGridView.SelectedCells[7].Value.ToString();
+            agentID.Text = exportDataGridView.SelectedCells[3].Value.ToString();
+            exportDate.Value = Convert.ToDateTime(exportDataGridView.SelectedCells[4].Value.ToString());
+            quantity.Value = Convert.ToInt32(exportDataGridView.SelectedCells[5].Value.ToString());
+            price.Text = exportDataGridView.SelectedCells[6].Value.ToString();
+            deliverStatus.Text = exportDataGridView.SelectedCells[7].Value.ToString();
+            paymentStatus.Text = exportDataGridView.SelectedCells[8].Value.ToString();
         }
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(exportID.Text))
             {
-                db.UPDATE_EXPORT_ORDER(exportID.Text, proID.Text, proName.Text, exportDate.Value, Convert.ToInt32(quantity.Value), int.Parse(price.Text), deliverStatus.Text, paymentStatus.Text);
+                db.UPDATE_EXPORT_ORDER(exportID.Text, proID.Text, proName.Text, agentID.Text, exportDate.Value, Convert.ToInt32(quantity.Value), int.Parse(price.Text), deliverStatus.Text, paymentStatus.Text);
                 db.SaveChanges();
                 exportID.Clear();
                 proID.Clear();
                 proName.Clear();
+                agentID.Clear();
                 price.Clear();
                 deliverStatus.Text = "";
                 paymentStatus.Text = "";
@@ -92,6 +95,7 @@ namespace MedicalManagement
                 exportID.Clear();
                 proID.Clear();
                 proName.Clear();
+                agentID.Clear();
                 price.Clear();
                 this.dataShow();
                 deliverStatus.Text = "";

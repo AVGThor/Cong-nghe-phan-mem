@@ -35,6 +35,7 @@ namespace MedicalManagement
             this.goodsDeliveryBtn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.productManagementBtn = new System.Windows.Forms.Button();
+            this.agentBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -53,11 +54,11 @@ namespace MedicalManagement
             this.goodsReceivedBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
             this.goodsReceivedBtn.Image = ((System.Drawing.Image)(resources.GetObject("goodsReceivedBtn.Image")));
             this.goodsReceivedBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.goodsReceivedBtn.Location = new System.Drawing.Point(147, 126);
+            this.goodsReceivedBtn.Location = new System.Drawing.Point(132, 126);
             this.goodsReceivedBtn.Name = "goodsReceivedBtn";
-            this.goodsReceivedBtn.Size = new System.Drawing.Size(164, 48);
+            this.goodsReceivedBtn.Size = new System.Drawing.Size(179, 48);
             this.goodsReceivedBtn.TabIndex = 2;
-            this.goodsReceivedBtn.Text = "Good Received";
+            this.goodsReceivedBtn.Text = "Goods Received";
             this.goodsReceivedBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.goodsReceivedBtn.UseVisualStyleBackColor = true;
             this.goodsReceivedBtn.Click += new System.EventHandler(this.goodsReceivedBtn_Click);
@@ -67,11 +68,11 @@ namespace MedicalManagement
             this.goodsDeliveryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
             this.goodsDeliveryBtn.Image = ((System.Drawing.Image)(resources.GetObject("goodsDeliveryBtn.Image")));
             this.goodsDeliveryBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.goodsDeliveryBtn.Location = new System.Drawing.Point(147, 192);
+            this.goodsDeliveryBtn.Location = new System.Drawing.Point(132, 192);
             this.goodsDeliveryBtn.Name = "goodsDeliveryBtn";
-            this.goodsDeliveryBtn.Size = new System.Drawing.Size(164, 48);
+            this.goodsDeliveryBtn.Size = new System.Drawing.Size(179, 48);
             this.goodsDeliveryBtn.TabIndex = 3;
-            this.goodsDeliveryBtn.Text = "Good Delivery";
+            this.goodsDeliveryBtn.Text = "Goods Delivery";
             this.goodsDeliveryBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.goodsDeliveryBtn.UseVisualStyleBackColor = true;
             this.goodsDeliveryBtn.Click += new System.EventHandler(this.goodsDeliveryBtn_Click);
@@ -95,7 +96,7 @@ namespace MedicalManagement
             this.productManagementBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
             this.productManagementBtn.Image = ((System.Drawing.Image)(resources.GetObject("productManagementBtn.Image")));
             this.productManagementBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.productManagementBtn.Location = new System.Drawing.Point(147, 260);
+            this.productManagementBtn.Location = new System.Drawing.Point(132, 259);
             this.productManagementBtn.Name = "productManagementBtn";
             this.productManagementBtn.Size = new System.Drawing.Size(218, 48);
             this.productManagementBtn.TabIndex = 5;
@@ -104,11 +105,26 @@ namespace MedicalManagement
             this.productManagementBtn.UseVisualStyleBackColor = true;
             this.productManagementBtn.Click += new System.EventHandler(this.productManagementBtn_Click);
             // 
+            // agentBtn
+            // 
+            this.agentBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.agentBtn.Image = ((System.Drawing.Image)(resources.GetObject("agentBtn.Image")));
+            this.agentBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.agentBtn.Location = new System.Drawing.Point(568, 192);
+            this.agentBtn.Name = "agentBtn";
+            this.agentBtn.Size = new System.Drawing.Size(135, 48);
+            this.agentBtn.TabIndex = 6;
+            this.agentBtn.Text = "Agents List";
+            this.agentBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.agentBtn.UseVisualStyleBackColor = true;
+            this.agentBtn.Click += new System.EventHandler(this.agentBtn_Click);
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(928, 562);
+            this.Controls.Add(this.agentBtn);
             this.Controls.Add(this.productManagementBtn);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.goodsDeliveryBtn);
@@ -129,5 +145,6 @@ namespace MedicalManagement
         private System.Windows.Forms.Button goodsDeliveryBtn;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button productManagementBtn;
+        private System.Windows.Forms.Button agentBtn;
     }
 }

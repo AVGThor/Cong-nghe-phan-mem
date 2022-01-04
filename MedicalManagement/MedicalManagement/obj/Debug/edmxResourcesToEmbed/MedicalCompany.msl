@@ -1,12 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="MEDICALCOMPANYModelStoreContainer" CdmEntityContainer="MEDICALCOMPANYEntities">
+    <EntitySetMapping Name="Accountants">
+      <EntityTypeMapping TypeName="MEDICALCOMPANYModel.Accountant">
+        <MappingFragment StoreEntitySet="Accountant">
+          <ScalarProperty Name="ACCOUNTANT_ID" ColumnName="ACCOUNTANT_ID" />
+          <ScalarProperty Name="ACCOUNTANT_NAME" ColumnName="ACCOUNTANT_NAME" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="MEDICALCOMPANYModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="ADMIN_ID" ColumnName="ADMIN_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Agents">
+      <EntityTypeMapping TypeName="MEDICALCOMPANYModel.Agent">
+        <MappingFragment StoreEntitySet="Agent">
+          <ScalarProperty Name="AGENT_ID" ColumnName="AGENT_ID" />
+          <ScalarProperty Name="AGENT_NAME" ColumnName="AGENT_NAME" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="EXPORTs">
       <EntityTypeMapping TypeName="MEDICALCOMPANYModel.EXPORT">
         <MappingFragment StoreEntitySet="EXPORT">
           <ScalarProperty Name="EXPORT_ID" ColumnName="EXPORT_ID" />
           <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
           <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+          <ScalarProperty Name="AGENT_ID" ColumnName="AGENT_ID" />
           <ScalarProperty Name="EXPORT_DATE" ColumnName="EXPORT_DATE" />
           <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
           <ScalarProperty Name="PRICE" ColumnName="PRICE" />
@@ -52,6 +79,7 @@
           <ScalarProperty Name="EXPORT_ID" ColumnName="EXPORT_ID" />
           <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
           <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+          <ScalarProperty Name="AGENT_ID" ColumnName="AGENT_ID" />
           <ScalarProperty Name="EXPORT_DATE" ColumnName="EXPORT_DATE" />
           <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
           <ScalarProperty Name="PRICE" ColumnName="PRICE" />
@@ -72,8 +100,10 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="addProduct" FunctionName="MEDICALCOMPANYModel.Store.addProduct" />
     <FunctionImportMapping FunctionImportName="DELETE_EXPORT_ORDER" FunctionName="MEDICALCOMPANYModel.Store.DELETE_EXPORT_ORDER" />
     <FunctionImportMapping FunctionImportName="DELETE_IMPORT_ORDER" FunctionName="MEDICALCOMPANYModel.Store.DELETE_IMPORT_ORDER" />
+    <FunctionImportMapping FunctionImportName="deleteProduct" FunctionName="MEDICALCOMPANYModel.Store.deleteProduct" />
     <FunctionImportMapping FunctionImportName="delRevenueValue" FunctionName="MEDICALCOMPANYModel.Store.delRevenueValue" />
     <FunctionImportMapping FunctionImportName="delTempExportValue" FunctionName="MEDICALCOMPANYModel.Store.delTempExportValue" />
     <FunctionImportMapping FunctionImportName="delTempImportValue" FunctionName="MEDICALCOMPANYModel.Store.delTempImportValue" />
@@ -85,6 +115,7 @@
           <ScalarProperty Name="EXPORT_ID" ColumnName="EXPORT_ID" />
           <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
           <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+          <ScalarProperty Name="AGENT_ID" ColumnName="AGENT_ID" />
           <ScalarProperty Name="EXPORT_DATE" ColumnName="EXPORT_DATE" />
           <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
           <ScalarProperty Name="PRICE" ColumnName="PRICE" />
@@ -105,6 +136,16 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="showProduct" FunctionName="MEDICALCOMPANYModel.Store.showProduct">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MEDICALCOMPANYModel.showProduct_Result">
+          <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+          <ScalarProperty Name="PRO_NAME" ColumnName="PRO_NAME" />
+          <ScalarProperty Name="SALEPRICE" ColumnName="SALEPRICE" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="showREVENUE" FunctionName="MEDICALCOMPANYModel.Store.showREVENUE">
       <ResultMapping>
         <ComplexTypeMapping TypeName="MEDICALCOMPANYModel.showREVENUE_Result">
@@ -120,6 +161,7 @@
           <ScalarProperty Name="EXPORT_ID" ColumnName="EXPORT_ID" />
           <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
           <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+          <ScalarProperty Name="AGENT_ID" ColumnName="AGENT_ID" />
           <ScalarProperty Name="EXPORT_DATE" ColumnName="EXPORT_DATE" />
           <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
           <ScalarProperty Name="PRICE" ColumnName="PRICE" />
@@ -142,16 +184,13 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="UPDATE_EXPORT_ORDER" FunctionName="MEDICALCOMPANYModel.Store.UPDATE_EXPORT_ORDER" />
     <FunctionImportMapping FunctionImportName="UPDATE_IMPORT_ORDER" FunctionName="MEDICALCOMPANYModel.Store.UPDATE_IMPORT_ORDER" />
-    <FunctionImportMapping FunctionImportName="addProduct" FunctionName="MEDICALCOMPANYModel.Store.addProduct" />
-    <FunctionImportMapping FunctionImportName="deleteProduct" FunctionName="MEDICALCOMPANYModel.Store.deleteProduct" />
     <FunctionImportMapping FunctionImportName="updateProduct" FunctionName="MEDICALCOMPANYModel.Store.updateProduct" />
-    <FunctionImportMapping FunctionImportName="showProduct" FunctionName="MEDICALCOMPANYModel.Store.showProduct">
+    <FunctionImportMapping FunctionImportName="showAgent" FunctionName="MEDICALCOMPANYModel.Store.showAgent">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="MEDICALCOMPANYModel.showProduct_Result">
-          <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
-          <ScalarProperty Name="PRO_NAME" ColumnName="PRO_NAME" />
-          <ScalarProperty Name="SALEPRICE" ColumnName="SALEPRICE" />
-          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+        <ComplexTypeMapping TypeName="MEDICALCOMPANYModel.showAgent_Result">
+          <ScalarProperty Name="AGENT_ID" ColumnName="AGENT_ID" />
+          <ScalarProperty Name="AGENT_NAME" ColumnName="AGENT_NAME" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

@@ -4,6 +4,28 @@ GO
 USE MEDICALCOMPANY
 GO
 
+CREATE TABLE [Admin](
+	ADMIN_ID varchar(10)
+	primary key(ADMIN_ID)
+)
+go
+
+create table Accountant(
+	ACCOUNTANT_ID varchar(10),
+	ACCOUNTANT_NAME nvarchar(50),
+	GENDER varchar(5),
+	SDT varchar(11)
+	primary key(ACCOUNTANT_ID)
+)
+GO
+
+create table Agent(
+	AGENT_ID varchar(10),
+	AGENT_NAME nvarchar(50),
+	[ADDRESS] varchar(30)
+	primary key(AGENT_ID)
+)
+
 CREATE TABLE PRODUCT(
 	PRO_ID VARCHAR(10),
 	PRO_NAME NVARCHAR(50),
@@ -42,6 +64,7 @@ CREATE TABLE EXPORT(
 	EXPORT_ID VARCHAR(10),
 	PRO_ID VARCHAR(10) FOREIGN KEY REFERENCES PRODUCT(PRO_ID),
 	PRODUCT_NAME NVARCHAR(50),
+	AGENT_ID VARCHAR(10) FOREIGN KEY REFERENCES AGENT(AGENT_ID),
 	EXPORT_DATE DATE,
 	QUANTITY INT,
 	PRICE DECIMAL(10,0),
@@ -50,11 +73,13 @@ CREATE TABLE EXPORT(
 	PRIMARY KEY(EXPORT_ID)
 )
 GO
+
 --DROP TABLE EXPORT
 CREATE TABLE Temp_EXPORT(
 	EXPORT_ID VARCHAR(10),
 	PRO_ID VARCHAR(10) FOREIGN KEY REFERENCES PRODUCT(PRO_ID),
 	PRODUCT_NAME NVARCHAR(50),
+	AGENT_ID VARCHAR(10) FOREIGN KEY REFERENCES AGENT(AGENT_ID),
 	EXPORT_DATE DATE,
 	QUANTITY INT,
 	PRICE DECIMAL(10,0),
@@ -80,6 +105,17 @@ INSERT INTO PRODUCT VALUES ('P5', 'Nutra Vision', '300000', 40)
 INSERT INTO PRODUCT VALUES ('P6', 'Suntory Sesamin Ex', '450000', 100)
 INSERT INTO PRODUCT VALUES ('P7', 'Vitamin tong hop', '200000', 100)
 GO
+
+INSERT INTO [Admin] VALUES('AD1')
+GO
+
+INSERT INTO [Accountant] VALUES('ACC1', 'Huy', 'Male', '0123456789')
+INSERT INTO [Accountant] VALUES('ACC2', 'Duy', 'Male', '0123456798')
+go
+
+INSERT INTO Agent VALUES('AG1', 'HEALTHCARE corp.', 'Ho Chi Minh City')
+INSERT INTO Agent VALUES('AG2', 'MEDICINE THANH TAM', 'Ha Noi')
+INSERT INTO Agent VALUES('AG3', 'HOSPITAL 3', 'Hue')
 
 -- set date format
 SET DATEFORMAT dmy
@@ -161,6 +197,7 @@ CREATE PROC EXPORT_ORDER
 	@EID VARCHAR(10),
 	@Pro_id VARCHAR(10),
 	@pro_name NVARCHAR(50),
+	@agent_id varchar(10),
 	@EDATE DATE,
 	@QUANTITY INT,
 	@PRICE DECIMAL(10, 0),
@@ -168,15 +205,17 @@ CREATE PROC EXPORT_ORDER
 	@payment_status nvarchar(30)
 AS
 BEGIN
-	INSERT INTO EXPORT VALUES(@EID, @Pro_id, @pro_name, @EDATE, @QUANTITY, @PRICE, @deliver_status, @payment_status);
-	INSERT INTO Temp_EXPORT VALUES(@EID, @Pro_id, @pro_name, @EDATE, @QUANTITY, @PRICE, @deliver_status, @payment_status);
+	INSERT INTO EXPORT VALUES(@EID, @Pro_id, @pro_name, @agent_id, @EDATE, @QUANTITY, @PRICE, @deliver_status, @payment_status);
+	INSERT INTO Temp_EXPORT VALUES(@EID, @Pro_id, @pro_name, @agent_id, @EDATE, @QUANTITY, @PRICE, @deliver_status, @payment_status);
 END
 GO
+--drop proc EXPORT_ORDER
 
 CREATE PROC UPDATE_EXPORT_ORDER
 	@EID VARCHAR(10),
 	@Pro_id VARCHAR(10),
 	@pro_name NVARCHAR(50),
+	@agent_id varchar(10),
 	@EDATE DATE,
 	@QUANTITY INT,
 	@PRICE DECIMAL(10, 0),
@@ -184,14 +223,15 @@ CREATE PROC UPDATE_EXPORT_ORDER
 	@payment_status nvarchar(30)
 AS
 BEGIN
-	UPDATE EXPORT SET EXPORT_ID = @EID, PRO_ID = @Pro_id, PRODUCT_NAME = @pro_name, EXPORT_DATE = @EDATE, QUANTITY = @QUANTITY, 
+	UPDATE EXPORT SET EXPORT_ID = @EID, PRO_ID = @Pro_id, PRODUCT_NAME = @pro_name, AGENT_ID = @agent_id, EXPORT_DATE = @EDATE, QUANTITY = @QUANTITY, 
 	PRICE = @PRICE, DELIVERY_STATUS = @deliver_status, PAYMENT_STATUS = @payment_status
 	WHERE EXPORT_ID = @EID;
-	UPDATE Temp_EXPORT SET EXPORT_ID = @EID, PRO_ID = @Pro_id, PRODUCT_NAME = @pro_name, EXPORT_DATE = @EDATE, QUANTITY = @QUANTITY, 
+	UPDATE Temp_EXPORT SET EXPORT_ID = @EID, PRO_ID = @Pro_id, PRODUCT_NAME = @pro_name, AGENT_ID = @agent_id, EXPORT_DATE = @EDATE, QUANTITY = @QUANTITY, 
 	PRICE = @PRICE, DELIVERY_STATUS = @deliver_status, PAYMENT_STATUS = @payment_status
 	WHERE EXPORT_ID = @EID;
 END
 GO
+--drop proc UPDATE_EXPORT_ORDER
 
 --delete export information
 CREATE PROC DELETE_EXPORT_ORDER
@@ -294,5 +334,13 @@ create proc showProduct
 as
 begin
 	select * from PRODUCT
+end
+go
+
+--proc to show agent list
+create proc showAgent
+as
+begin
+	select * from Agent
 end
 go

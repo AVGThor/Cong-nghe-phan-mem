@@ -1,5 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="MEDICALCOMPANYModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Accountant">
+    <Key>
+      <PropertyRef Name="ACCOUNTANT_ID" />
+    </Key>
+    <Property Name="ACCOUNTANT_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ACCOUNTANT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GENDER" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="SDT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="ADMIN_ID" />
+    </Key>
+    <Property Name="ADMIN_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Agent">
+    <Key>
+      <PropertyRef Name="AGENT_ID" />
+    </Key>
+    <Property Name="AGENT_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AGENT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ADDRESS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="EXPORTs" Relationship="Self.FK__EXPORT__AGENT_ID__71D1E811" FromRole="Agent" ToRole="EXPORT" />
+    <NavigationProperty Name="Temp_EXPORT" Relationship="Self.FK__Temp_EXPO__AGENT__6D0D32F4" FromRole="Agent" ToRole="Temp_EXPORT" />
+  </EntityType>
   <EntityType Name="EXPORT">
     <Key>
       <PropertyRef Name="EXPORT_ID" />
@@ -7,12 +32,14 @@
     <Property Name="EXPORT_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PRO_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="PRODUCT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AGENT_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="EXPORT_DATE" Type="DateTime" Precision="0" />
     <Property Name="QUANTITY" Type="Int32" />
     <Property Name="PRICE" Type="Decimal" Precision="10" Scale="0" />
     <Property Name="DELIVERY_STATUS" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <Property Name="PAYMENT_STATUS" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="PRODUCT" Relationship="Self.FK__EXPORT__PRO_ID__2C3393D0" FromRole="EXPORT" ToRole="PRODUCT" />
+    <NavigationProperty Name="Agent" Relationship="Self.FK__EXPORT__AGENT_ID__71D1E811" FromRole="EXPORT" ToRole="Agent" />
+    <NavigationProperty Name="PRODUCT" Relationship="Self.FK__EXPORT__PRO_ID__70DDC3D8" FromRole="EXPORT" ToRole="PRODUCT" />
   </EntityType>
   <EntityType Name="IMPORT">
     <Key>
@@ -42,9 +69,9 @@
     <Property Name="PRO_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="SALEPRICE" Type="Decimal" Precision="10" Scale="0" />
     <Property Name="QUANTITY" Type="Int32" />
-    <NavigationProperty Name="EXPORTs" Relationship="Self.FK__EXPORT__PRO_ID__2C3393D0" FromRole="PRODUCT" ToRole="EXPORT" />
+    <NavigationProperty Name="EXPORTs" Relationship="Self.FK__EXPORT__PRO_ID__70DDC3D8" FromRole="PRODUCT" ToRole="EXPORT" />
     <NavigationProperty Name="IMPORTs" Relationship="Self.FK__IMPORT__PRO_ID__267ABA7A" FromRole="PRODUCT" ToRole="IMPORT" />
-    <NavigationProperty Name="Temp_EXPORT" Relationship="Self.FK__Temp_EXPO__PRO_I__2F10007B" FromRole="PRODUCT" ToRole="Temp_EXPORT" />
+    <NavigationProperty Name="Temp_EXPORT" Relationship="Self.FK__Temp_EXPO__PRO_I__6C190EBB" FromRole="PRODUCT" ToRole="Temp_EXPORT" />
     <NavigationProperty Name="Temp_IMPORT" Relationship="Self.FK__Temp_IMPO__PRO_I__29572725" FromRole="PRODUCT" ToRole="Temp_IMPORT" />
   </EntityType>
   <EntityType Name="Temp_EXPORT">
@@ -54,12 +81,14 @@
     <Property Name="EXPORT_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PRO_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="PRODUCT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AGENT_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="EXPORT_DATE" Type="DateTime" Precision="0" />
     <Property Name="QUANTITY" Type="Int32" />
     <Property Name="PRICE" Type="Decimal" Precision="10" Scale="0" />
     <Property Name="DELIVERY_STATUS" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <Property Name="PAYMENT_STATUS" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="PRODUCT" Relationship="Self.FK__Temp_EXPO__PRO_I__2F10007B" FromRole="Temp_EXPORT" ToRole="PRODUCT" />
+    <NavigationProperty Name="Agent" Relationship="Self.FK__Temp_EXPO__AGENT__6D0D32F4" FromRole="Temp_EXPORT" ToRole="Agent" />
+    <NavigationProperty Name="PRODUCT" Relationship="Self.FK__Temp_EXPO__PRO_I__6C190EBB" FromRole="Temp_EXPORT" ToRole="PRODUCT" />
   </EntityType>
   <EntityType Name="Temp_IMPORT">
     <Key>
@@ -73,7 +102,31 @@
     <Property Name="QUANTITY" Type="Int32" />
     <NavigationProperty Name="PRODUCT" Relationship="Self.FK__Temp_IMPO__PRO_I__29572725" FromRole="Temp_IMPORT" ToRole="PRODUCT" />
   </EntityType>
-  <Association Name="FK__EXPORT__PRO_ID__2C3393D0">
+  <Association Name="FK__EXPORT__AGENT_ID__71D1E811">
+    <End Role="Agent" Type="Self.Agent" Multiplicity="0..1" />
+    <End Role="EXPORT" Type="Self.EXPORT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agent">
+        <PropertyRef Name="AGENT_ID" />
+      </Principal>
+      <Dependent Role="EXPORT">
+        <PropertyRef Name="AGENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Temp_EXPO__AGENT__6D0D32F4">
+    <End Role="Agent" Type="Self.Agent" Multiplicity="0..1" />
+    <End Role="Temp_EXPORT" Type="Self.Temp_EXPORT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agent">
+        <PropertyRef Name="AGENT_ID" />
+      </Principal>
+      <Dependent Role="Temp_EXPORT">
+        <PropertyRef Name="AGENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EXPORT__PRO_ID__70DDC3D8">
     <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
     <End Role="EXPORT" Type="Self.EXPORT" Multiplicity="*" />
     <ReferentialConstraint>
@@ -97,7 +150,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Temp_EXPO__PRO_I__2F10007B">
+  <Association Name="FK__Temp_EXPO__PRO_I__6C190EBB">
     <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
     <End Role="Temp_EXPORT" Type="Self.Temp_EXPORT" Multiplicity="*" />
     <ReferentialConstraint>
@@ -122,13 +175,24 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="MEDICALCOMPANYEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accountants" EntityType="Self.Accountant" />
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Agents" EntityType="Self.Agent" />
     <EntitySet Name="EXPORTs" EntityType="Self.EXPORT" />
     <EntitySet Name="IMPORTs" EntityType="Self.IMPORT" />
     <EntitySet Name="monthRevenues" EntityType="Self.monthRevenue" />
     <EntitySet Name="PRODUCTs" EntityType="Self.PRODUCT" />
     <EntitySet Name="Temp_EXPORT" EntityType="Self.Temp_EXPORT" />
     <EntitySet Name="Temp_IMPORT" EntityType="Self.Temp_IMPORT" />
-    <AssociationSet Name="FK__EXPORT__PRO_ID__2C3393D0" Association="Self.FK__EXPORT__PRO_ID__2C3393D0">
+    <AssociationSet Name="FK__EXPORT__AGENT_ID__71D1E811" Association="Self.FK__EXPORT__AGENT_ID__71D1E811">
+      <End Role="Agent" EntitySet="Agents" />
+      <End Role="EXPORT" EntitySet="EXPORTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Temp_EXPO__AGENT__6D0D32F4" Association="Self.FK__Temp_EXPO__AGENT__6D0D32F4">
+      <End Role="Agent" EntitySet="Agents" />
+      <End Role="Temp_EXPORT" EntitySet="Temp_EXPORT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EXPORT__PRO_ID__70DDC3D8" Association="Self.FK__EXPORT__PRO_ID__70DDC3D8">
       <End Role="PRODUCT" EntitySet="PRODUCTs" />
       <End Role="EXPORT" EntitySet="EXPORTs" />
     </AssociationSet>
@@ -136,7 +200,7 @@
       <End Role="PRODUCT" EntitySet="PRODUCTs" />
       <End Role="IMPORT" EntitySet="IMPORTs" />
     </AssociationSet>
-    <AssociationSet Name="FK__Temp_EXPO__PRO_I__2F10007B" Association="Self.FK__Temp_EXPO__PRO_I__2F10007B">
+    <AssociationSet Name="FK__Temp_EXPO__PRO_I__6C190EBB" Association="Self.FK__Temp_EXPO__PRO_I__6C190EBB">
       <End Role="PRODUCT" EntitySet="PRODUCTs" />
       <End Role="Temp_EXPORT" EntitySet="Temp_EXPORT" />
     </AssociationSet>
@@ -144,10 +208,19 @@
       <End Role="PRODUCT" EntitySet="PRODUCTs" />
       <End Role="Temp_IMPORT" EntitySet="Temp_IMPORT" />
     </AssociationSet>
+    <FunctionImport Name="addProduct">
+      <Parameter Name="proID" Mode="In" Type="String" />
+      <Parameter Name="proName" Mode="In" Type="String" />
+      <Parameter Name="price" Mode="In" Type="Decimal" />
+      <Parameter Name="quantity" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="DELETE_EXPORT_ORDER">
       <Parameter Name="id" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="DELETE_IMPORT_ORDER">
+      <Parameter Name="id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="deleteProduct">
       <Parameter Name="id" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="delRevenueValue" />
@@ -157,6 +230,7 @@
       <Parameter Name="EID" Mode="In" Type="String" />
       <Parameter Name="Pro_id" Mode="In" Type="String" />
       <Parameter Name="pro_name" Mode="In" Type="String" />
+      <Parameter Name="agent_id" Mode="In" Type="String" />
       <Parameter Name="EDATE" Mode="In" Type="DateTime" />
       <Parameter Name="QUANTITY" Mode="In" Type="Int32" />
       <Parameter Name="PRICE" Mode="In" Type="Decimal" />
@@ -177,6 +251,7 @@
     <FunctionImport Name="showIMPORT" ReturnType="Collection(MEDICALCOMPANYModel.showIMPORT_Result)">
       <Parameter Name="month" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="showProduct" ReturnType="Collection(MEDICALCOMPANYModel.showProduct_Result)" />
     <FunctionImport Name="showREVENUE" ReturnType="Collection(MEDICALCOMPANYModel.showREVENUE_Result)">
       <Parameter Name="month" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -186,6 +261,7 @@
       <Parameter Name="EID" Mode="In" Type="String" />
       <Parameter Name="Pro_id" Mode="In" Type="String" />
       <Parameter Name="pro_name" Mode="In" Type="String" />
+      <Parameter Name="agent_id" Mode="In" Type="String" />
       <Parameter Name="EDATE" Mode="In" Type="DateTime" />
       <Parameter Name="QUANTITY" Mode="In" Type="Int32" />
       <Parameter Name="PRICE" Mode="In" Type="Decimal" />
@@ -200,27 +276,19 @@
       <Parameter Name="PRICE" Mode="In" Type="Decimal" />
       <Parameter Name="QUANTITY" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="addProduct">
-      <Parameter Name="proID" Mode="In" Type="String" />
-      <Parameter Name="proName" Mode="In" Type="String" />
-      <Parameter Name="price" Mode="In" Type="Decimal" />
-      <Parameter Name="quantity" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="deleteProduct">
-      <Parameter Name="id" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="updateProduct">
       <Parameter Name="proId" Mode="In" Type="String" />
       <Parameter Name="proName" Mode="In" Type="String" />
       <Parameter Name="PRICE" Mode="In" Type="Decimal" />
       <Parameter Name="QUANTITY" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="showProduct" ReturnType="Collection(MEDICALCOMPANYModel.showProduct_Result)" />
+    <FunctionImport Name="showAgent" ReturnType="Collection(MEDICALCOMPANYModel.showAgent_Result)" />
   </EntityContainer>
   <ComplexType Name="showEXPORT_Result">
     <Property Type="String" Name="EXPORT_ID" Nullable="false" MaxLength="10" />
     <Property Type="String" Name="PRO_ID" Nullable="true" MaxLength="10" />
     <Property Type="String" Name="PRODUCT_NAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="AGENT_ID" Nullable="true" MaxLength="10" />
     <Property Type="DateTime" Name="EXPORT_DATE" Nullable="true" />
     <Property Type="Int32" Name="QUANTITY" Nullable="true" />
     <Property Type="Decimal" Name="PRICE" Nullable="true" Precision="10" Scale="0" />
@@ -235,6 +303,12 @@
     <Property Type="Decimal" Name="PRICE" Nullable="true" Precision="10" Scale="0" />
     <Property Type="Int32" Name="QUANTITY" Nullable="true" />
   </ComplexType>
+  <ComplexType Name="showProduct_Result">
+    <Property Type="String" Name="PRO_ID" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="PRO_NAME" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="SALEPRICE" Nullable="true" Precision="10" Scale="0" />
+    <Property Type="Int32" Name="QUANTITY" Nullable="true" />
+  </ComplexType>
   <ComplexType Name="showREVENUE_Result">
     <Property Type="Int32" Name="STT" Nullable="false" />
     <Property Type="Int32" Name="SELECTED_MONTH" Nullable="true" />
@@ -244,6 +318,7 @@
     <Property Type="String" Name="EXPORT_ID" Nullable="false" MaxLength="10" />
     <Property Type="String" Name="PRO_ID" Nullable="true" MaxLength="10" />
     <Property Type="String" Name="PRODUCT_NAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="AGENT_ID" Nullable="true" MaxLength="10" />
     <Property Type="DateTime" Name="EXPORT_DATE" Nullable="true" />
     <Property Type="Int32" Name="QUANTITY" Nullable="true" />
     <Property Type="Decimal" Name="PRICE" Nullable="true" Precision="10" Scale="0" />
@@ -258,10 +333,9 @@
     <Property Type="Decimal" Name="PRICE" Nullable="true" Precision="10" Scale="0" />
     <Property Type="Int32" Name="QUANTITY" Nullable="true" />
   </ComplexType>
-  <ComplexType Name="showProduct_Result">
-    <Property Type="String" Name="PRO_ID" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="PRO_NAME" Nullable="true" MaxLength="50" />
-    <Property Type="Decimal" Name="SALEPRICE" Nullable="true" Precision="10" Scale="0" />
-    <Property Type="Int32" Name="QUANTITY" Nullable="true" />
+  <ComplexType Name="showAgent_Result">
+    <Property Type="String" Name="AGENT_ID" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="AGENT_NAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ADDRESS" Nullable="true" MaxLength="30" />
   </ComplexType>
 </Schema>

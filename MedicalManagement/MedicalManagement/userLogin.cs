@@ -14,9 +14,7 @@ namespace MedicalManagement
     
     public partial class userLogin
     {
-        public int ID { get; set; }
         public string username { get; set; }
         public string userPass { get; set; }
-        public string userType { get; set; }
     }
 }

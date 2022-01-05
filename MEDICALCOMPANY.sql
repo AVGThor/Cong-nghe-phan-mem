@@ -4,6 +4,17 @@ GO
 USE MEDICALCOMPANY
 GO
 
+CREATE TABLE userLogin(
+	username nvarchar(50),
+	userPass varchar(50),
+	primary key(username)
+)
+go
+
+insert into userLogin values('Duy', '1234')
+insert into userLogin values('Huy', '1234')
+SELECT * FROM userLogin
+
 CREATE TABLE [Admin](
 	ADMIN_ID varchar(10)
 	primary key(ADMIN_ID)

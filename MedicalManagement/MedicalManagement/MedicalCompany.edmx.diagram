@@ -20,6 +20,7 @@
         <AssociationConnector Association="MEDICALCOMPANYModel.FK__IMPORT__PRO_ID__267ABA7A" ManuallyRouted="false" />
         <AssociationConnector Association="MEDICALCOMPANYModel.FK__Temp_EXPO__PRO_I__6C190EBB" ManuallyRouted="false" />
         <AssociationConnector Association="MEDICALCOMPANYModel.FK__Temp_IMPO__PRO_I__29572725" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MEDICALCOMPANYModel.userLogin" Width="1.5" PointX="8.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

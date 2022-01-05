@@ -36,6 +36,7 @@ namespace MedicalManagement
         public virtual DbSet<PRODUCT> PRODUCTs { get; set; }
         public virtual DbSet<Temp_EXPORT> Temp_EXPORT { get; set; }
         public virtual DbSet<Temp_IMPORT> Temp_IMPORT { get; set; }
+        public virtual DbSet<userLogin> userLogins { get; set; }
     
         public virtual int addProduct(string proID, string proName, Nullable<decimal> price, Nullable<int> quantity)
         {

@@ -38,6 +38,7 @@ namespace MedicalManagement
             {
                 MessageBox.Show("Please input data first");
             }
+            
         }
 
         // display data when input

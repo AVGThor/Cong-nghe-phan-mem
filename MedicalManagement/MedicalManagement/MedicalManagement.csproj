@@ -162,6 +162,9 @@
     <Compile Include="Temp_IMPORT.cs">
       <DependentUpon>MedicalCompany.tt</DependentUpon>
     </Compile>
+    <Compile Include="userLogin.cs">
+      <DependentUpon>MedicalCompany.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -283,6 +283,7 @@
       <Parameter Name="QUANTITY" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="showAgent" ReturnType="Collection(MEDICALCOMPANYModel.showAgent_Result)" />
+    <EntitySet Name="userLogins" EntityType="MEDICALCOMPANYModel.userLogin" />
   </EntityContainer>
   <ComplexType Name="showEXPORT_Result">
     <Property Type="String" Name="EXPORT_ID" Nullable="false" MaxLength="10" />
@@ -338,4 +339,11 @@
     <Property Type="String" Name="AGENT_NAME" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="ADDRESS" Nullable="true" MaxLength="30" />
   </ComplexType>
+  <EntityType Name="userLogin">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="userPass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

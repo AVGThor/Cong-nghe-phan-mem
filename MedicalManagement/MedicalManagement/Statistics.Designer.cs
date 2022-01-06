@@ -46,10 +46,9 @@ namespace MedicalManagement
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30.25F);
-            this.label1.Location = new System.Drawing.Point(288, 9);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(384, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 47);
+            this.label1.Size = new System.Drawing.Size(229, 59);
             this.label1.TabIndex = 20;
             this.label1.Text = "Statistics";
             // 
@@ -58,9 +57,10 @@ namespace MedicalManagement
             this.importBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
             this.importBtn.Image = ((System.Drawing.Image)(resources.GetObject("importBtn.Image")));
             this.importBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.importBtn.Location = new System.Drawing.Point(158, 310);
+            this.importBtn.Location = new System.Drawing.Point(211, 382);
+            this.importBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.importBtn.Name = "importBtn";
-            this.importBtn.Size = new System.Drawing.Size(164, 48);
+            this.importBtn.Size = new System.Drawing.Size(219, 59);
             this.importBtn.TabIndex = 21;
             this.importBtn.Text = "Import history";
             this.importBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -70,10 +70,12 @@ namespace MedicalManagement
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(158, 70);
+            this.dataGridView.Location = new System.Drawing.Point(211, 86);
+            this.dataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(619, 234);
+            this.dataGridView.Size = new System.Drawing.Size(825, 288);
             this.dataGridView.TabIndex = 32;
             // 
             // outputBtn
@@ -81,11 +83,12 @@ namespace MedicalManagement
             this.outputBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
             this.outputBtn.Image = ((System.Drawing.Image)(resources.GetObject("outputBtn.Image")));
             this.outputBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.outputBtn.Location = new System.Drawing.Point(340, 310);
+            this.outputBtn.Location = new System.Drawing.Point(453, 382);
+            this.outputBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.outputBtn.Name = "outputBtn";
-            this.outputBtn.Size = new System.Drawing.Size(164, 48);
+            this.outputBtn.Size = new System.Drawing.Size(219, 59);
             this.outputBtn.TabIndex = 33;
-            this.outputBtn.Text = "Output history";
+            this.outputBtn.Text = "Export history";
             this.outputBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.outputBtn.UseVisualStyleBackColor = true;
             this.outputBtn.Click += new System.EventHandler(this.outputBtn_Click);
@@ -95,9 +98,10 @@ namespace MedicalManagement
             this.revenueBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
             this.revenueBtn.Image = ((System.Drawing.Image)(resources.GetObject("revenueBtn.Image")));
             this.revenueBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.revenueBtn.Location = new System.Drawing.Point(521, 310);
+            this.revenueBtn.Location = new System.Drawing.Point(695, 382);
+            this.revenueBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.revenueBtn.Name = "revenueBtn";
-            this.revenueBtn.Size = new System.Drawing.Size(117, 48);
+            this.revenueBtn.Size = new System.Drawing.Size(156, 59);
             this.revenueBtn.TabIndex = 34;
             this.revenueBtn.Text = "Revenue";
             this.revenueBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -106,7 +110,8 @@ namespace MedicalManagement
             // 
             // month
             // 
-            this.month.Location = new System.Drawing.Point(78, 328);
+            this.month.Location = new System.Drawing.Point(104, 404);
+            this.month.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.month.Maximum = new decimal(new int[] {
             12,
             0,
@@ -118,7 +123,7 @@ namespace MedicalManagement
             0,
             0});
             this.month.Name = "month";
-            this.month.Size = new System.Drawing.Size(53, 20);
+            this.month.Size = new System.Drawing.Size(71, 22);
             this.month.TabIndex = 35;
             this.month.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.month.Value = new decimal(new int[] {
@@ -131,9 +136,10 @@ namespace MedicalManagement
             // 
             this.monthLabel.AutoSize = true;
             this.monthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.monthLabel.Location = new System.Drawing.Point(12, 326);
+            this.monthLabel.Location = new System.Drawing.Point(16, 401);
+            this.monthLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.monthLabel.Name = "monthLabel";
-            this.monthLabel.Size = new System.Drawing.Size(59, 22);
+            this.monthLabel.Size = new System.Drawing.Size(79, 29);
             this.monthLabel.TabIndex = 36;
             this.monthLabel.Text = "Month";
             // 
@@ -141,9 +147,10 @@ namespace MedicalManagement
             // 
             this.doneBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.doneBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.doneBtn.Location = new System.Drawing.Point(686, 310);
+            this.doneBtn.Location = new System.Drawing.Point(915, 382);
+            this.doneBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.doneBtn.Name = "doneBtn";
-            this.doneBtn.Size = new System.Drawing.Size(91, 48);
+            this.doneBtn.Size = new System.Drawing.Size(121, 59);
             this.doneBtn.TabIndex = 37;
             this.doneBtn.Text = "Done";
             this.doneBtn.UseVisualStyleBackColor = true;
@@ -151,9 +158,9 @@ namespace MedicalManagement
             // 
             // Statistics
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.doneBtn);
             this.Controls.Add(this.monthLabel);
             this.Controls.Add(this.month);
@@ -162,6 +169,7 @@ namespace MedicalManagement
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.importBtn);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Statistics";
             this.Text = "Statistics";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();

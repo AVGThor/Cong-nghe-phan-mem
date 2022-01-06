@@ -42,10 +42,9 @@ namespace MedicalManagement
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 50.25F);
-            this.label1.Location = new System.Drawing.Point(202, 9);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(269, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(543, 76);
+            this.label1.Size = new System.Drawing.Size(680, 95);
             this.label1.TabIndex = 1;
             this.label1.Text = "Accountant Page";
             // 
@@ -54,9 +53,10 @@ namespace MedicalManagement
             this.goodsReceivedBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
             this.goodsReceivedBtn.Image = ((System.Drawing.Image)(resources.GetObject("goodsReceivedBtn.Image")));
             this.goodsReceivedBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.goodsReceivedBtn.Location = new System.Drawing.Point(132, 126);
+            this.goodsReceivedBtn.Location = new System.Drawing.Point(176, 155);
+            this.goodsReceivedBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.goodsReceivedBtn.Name = "goodsReceivedBtn";
-            this.goodsReceivedBtn.Size = new System.Drawing.Size(179, 48);
+            this.goodsReceivedBtn.Size = new System.Drawing.Size(239, 59);
             this.goodsReceivedBtn.TabIndex = 2;
             this.goodsReceivedBtn.Text = "Goods Received";
             this.goodsReceivedBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -68,9 +68,10 @@ namespace MedicalManagement
             this.goodsDeliveryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
             this.goodsDeliveryBtn.Image = ((System.Drawing.Image)(resources.GetObject("goodsDeliveryBtn.Image")));
             this.goodsDeliveryBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.goodsDeliveryBtn.Location = new System.Drawing.Point(132, 192);
+            this.goodsDeliveryBtn.Location = new System.Drawing.Point(176, 236);
+            this.goodsDeliveryBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.goodsDeliveryBtn.Name = "goodsDeliveryBtn";
-            this.goodsDeliveryBtn.Size = new System.Drawing.Size(179, 48);
+            this.goodsDeliveryBtn.Size = new System.Drawing.Size(239, 59);
             this.goodsDeliveryBtn.TabIndex = 3;
             this.goodsDeliveryBtn.Text = "Goods Delivery";
             this.goodsDeliveryBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -82,9 +83,10 @@ namespace MedicalManagement
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(568, 126);
+            this.button1.Location = new System.Drawing.Point(757, 155);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 48);
+            this.button1.Size = new System.Drawing.Size(157, 59);
             this.button1.TabIndex = 4;
             this.button1.Text = "Statistics";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -96,9 +98,10 @@ namespace MedicalManagement
             this.productManagementBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
             this.productManagementBtn.Image = ((System.Drawing.Image)(resources.GetObject("productManagementBtn.Image")));
             this.productManagementBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.productManagementBtn.Location = new System.Drawing.Point(132, 259);
+            this.productManagementBtn.Location = new System.Drawing.Point(176, 319);
+            this.productManagementBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.productManagementBtn.Name = "productManagementBtn";
-            this.productManagementBtn.Size = new System.Drawing.Size(218, 48);
+            this.productManagementBtn.Size = new System.Drawing.Size(291, 59);
             this.productManagementBtn.TabIndex = 5;
             this.productManagementBtn.Text = "Product Management";
             this.productManagementBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -110,9 +113,10 @@ namespace MedicalManagement
             this.agentBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
             this.agentBtn.Image = ((System.Drawing.Image)(resources.GetObject("agentBtn.Image")));
             this.agentBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.agentBtn.Location = new System.Drawing.Point(568, 192);
+            this.agentBtn.Location = new System.Drawing.Point(757, 236);
+            this.agentBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.agentBtn.Name = "agentBtn";
-            this.agentBtn.Size = new System.Drawing.Size(135, 48);
+            this.agentBtn.Size = new System.Drawing.Size(180, 59);
             this.agentBtn.TabIndex = 6;
             this.agentBtn.Text = "Agents List";
             this.agentBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -121,18 +125,18 @@ namespace MedicalManagement
             // 
             // AdminForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(928, 562);
+            this.ClientSize = new System.Drawing.Size(1237, 692);
             this.Controls.Add(this.agentBtn);
             this.Controls.Add(this.productManagementBtn);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.goodsDeliveryBtn);
             this.Controls.Add(this.goodsReceivedBtn);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AdminForm";
-            this.Text = "AdminForm";
+            this.Text = "Home Page";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MEDICALCOMPANYModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Accountant">
+    <Key>
+      <PropertyRef Name="ACCOUNTANT_ID" />
+    </Key>
+    <Property Name="ACCOUNTANT_ID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ACCOUNTANT_NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="GENDER" Type="varchar" MaxLength="5" />
+    <Property Name="SDT" Type="varchar" MaxLength="11" />
+  </EntityType>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="ADMIN_ID" />
+    </Key>
+    <Property Name="ADMIN_ID" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Agent">
+    <Key>
+      <PropertyRef Name="AGENT_ID" />
+    </Key>
+    <Property Name="AGENT_ID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="AGENT_NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="ADDRESS" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="EXPORT">
+    <Key>
+      <PropertyRef Name="EXPORT_ID" />
+    </Key>
+    <Property Name="EXPORT_ID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="PRO_ID" Type="varchar" MaxLength="10" />
+    <Property Name="PRODUCT_NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="AGENT_ID" Type="varchar" MaxLength="10" />
+    <Property Name="EXPORT_DATE" Type="date" />
+    <Property Name="QUANTITY" Type="int" />
+    <Property Name="PRICE" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="DELIVERY_STATUS" Type="nvarchar" MaxLength="30" />
+    <Property Name="PAYMENT_STATUS" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="IMPORT">
+    <Key>
+      <PropertyRef Name="IMPORT_ID" />
+    </Key>
+    <Property Name="IMPORT_ID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="PRO_ID" Type="varchar" MaxLength="10" />
+    <Property Name="PRODUCT_NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="IMPORT_DATE" Type="date" />
+    <Property Name="PRICE" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="QUANTITY" Type="int" />
+  </EntityType>
+  <EntityType Name="monthRevenue">
+    <Key>
+      <PropertyRef Name="STT" />
+    </Key>
+    <Property Name="STT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SELECTED_MONTH" Type="int" />
+    <Property Name="REVENUE" Type="decimal" Precision="10" Scale="0" />
+  </EntityType>
+  <EntityType Name="PRODUCT">
+    <Key>
+      <PropertyRef Name="PRO_ID" />
+    </Key>
+    <Property Name="PRO_ID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="PRO_NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="SALEPRICE" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="QUANTITY" Type="int" />
+  </EntityType>
+  <EntityType Name="Temp_EXPORT">
+    <Key>
+      <PropertyRef Name="EXPORT_ID" />
+    </Key>
+    <Property Name="EXPORT_ID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="PRO_ID" Type="varchar" MaxLength="10" />
+    <Property Name="PRODUCT_NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="AGENT_ID" Type="varchar" MaxLength="10" />
+    <Property Name="EXPORT_DATE" Type="date" />
+    <Property Name="QUANTITY" Type="int" />
+    <Property Name="PRICE" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="DELIVERY_STATUS" Type="nvarchar" MaxLength="30" />
+    <Property Name="PAYMENT_STATUS" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Temp_IMPORT">
+    <Key>
+      <PropertyRef Name="IMPORT_ID" />
+    </Key>
+    <Property Name="IMPORT_ID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="PRO_ID" Type="varchar" MaxLength="10" />
+    <Property Name="PRODUCT_NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="IMPORT_DATE" Type="date" />
+    <Property Name="PRICE" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="QUANTITY" Type="int" />
+  </EntityType>
+  <EntityType Name="userLogin">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="userPass" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__EXPORT__AGENT_ID__71D1E811">
+    <End Role="Agent" Type="Self.Agent" Multiplicity="0..1" />
+    <End Role="EXPORT" Type="Self.EXPORT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agent">
+        <PropertyRef Name="AGENT_ID" />
+      </Principal>
+      <Dependent Role="EXPORT">
+        <PropertyRef Name="AGENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EXPORT__PRO_ID__70DDC3D8">
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
+    <End Role="EXPORT" Type="Self.EXPORT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCT">
+        <PropertyRef Name="PRO_ID" />
+      </Principal>
+      <Dependent Role="EXPORT">
+        <PropertyRef Name="PRO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IMPORT__PRO_ID__267ABA7A">
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
+    <End Role="IMPORT" Type="Self.IMPORT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCT">
+        <PropertyRef Name="PRO_ID" />
+      </Principal>
+      <Dependent Role="IMPORT">
+        <PropertyRef Name="PRO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Temp_EXPO__AGENT__6D0D32F4">
+    <End Role="Agent" Type="Self.Agent" Multiplicity="0..1" />
+    <End Role="Temp_EXPORT" Type="Self.Temp_EXPORT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agent">
+        <PropertyRef Name="AGENT_ID" />
+      </Principal>
+      <Dependent Role="Temp_EXPORT">
+        <PropertyRef Name="AGENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Temp_EXPO__PRO_I__6C190EBB">
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
+    <End Role="Temp_EXPORT" Type="Self.Temp_EXPORT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCT">
+        <PropertyRef Name="PRO_ID" />
+      </Principal>
+      <Dependent Role="Temp_EXPORT">
+        <PropertyRef Name="PRO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Temp_IMPO__PRO_I__29572725">
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
+    <End Role="Temp_IMPORT" Type="Self.Temp_IMPORT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCT">
+        <PropertyRef Name="PRO_ID" />
+      </Principal>
+      <Dependent Role="Temp_IMPORT">
+        <PropertyRef Name="PRO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="addProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="proID" Type="varchar" Mode="In" />
+    <Parameter Name="proName" Type="nvarchar" Mode="In" />
+    <Parameter Name="price" Type="decimal" Mode="In" />
+    <Parameter Name="quantity" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DELETE_EXPORT_ORDER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="DELETE_IMPORT_ORDER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="deleteProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="delRevenueValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="delTempExportValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="delTempImportValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="EXPORT_ORDER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EID" Type="varchar" Mode="In" />
+    <Parameter Name="Pro_id" Type="varchar" Mode="In" />
+    <Parameter Name="pro_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="agent_id" Type="varchar" Mode="In" />
+    <Parameter Name="EDATE" Type="date" Mode="In" />
+    <Parameter Name="QUANTITY" Type="int" Mode="In" />
+    <Parameter Name="PRICE" Type="decimal" Mode="In" />
+    <Parameter Name="deliver_status" Type="nvarchar" Mode="In" />
+    <Parameter Name="payment_status" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="IMPORT_ORDER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IID" Type="varchar" Mode="In" />
+    <Parameter Name="Pro_id" Type="varchar" Mode="In" />
+    <Parameter Name="pro_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="IDATE" Type="date" Mode="In" />
+    <Parameter Name="PRICE" Type="decimal" Mode="In" />
+    <Parameter Name="QUANTITY" Type="int" Mode="In" />
+  </Function>
+  <Function Name="showAgent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="showEXPORT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="month" Type="int" Mode="In" />
+  </Function>
+  <Function Name="showIMPORT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="month" Type="int" Mode="In" />
+  </Function>
+  <Function Name="showProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="showREVENUE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="month" Type="int" Mode="In" />
+  </Function>
+  <Function Name="showTempEXPORT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="showTempIMPORT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UPDATE_EXPORT_ORDER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EID" Type="varchar" Mode="In" />
+    <Parameter Name="Pro_id" Type="varchar" Mode="In" />
+    <Parameter Name="pro_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="agent_id" Type="varchar" Mode="In" />
+    <Parameter Name="EDATE" Type="date" Mode="In" />
+    <Parameter Name="QUANTITY" Type="int" Mode="In" />
+    <Parameter Name="PRICE" Type="decimal" Mode="In" />
+    <Parameter Name="deliver_status" Type="nvarchar" Mode="In" />
+    <Parameter Name="payment_status" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UPDATE_IMPORT_ORDER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IID" Type="varchar" Mode="In" />
+    <Parameter Name="Pro_id" Type="varchar" Mode="In" />
+    <Parameter Name="pro_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="IDATE" Type="date" Mode="In" />
+    <Parameter Name="PRICE" Type="decimal" Mode="In" />
+    <Parameter Name="QUANTITY" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updateProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="proId" Type="varchar" Mode="In" />
+    <Parameter Name="proName" Type="nvarchar" Mode="In" />
+    <Parameter Name="PRICE" Type="decimal" Mode="In" />
+    <Parameter Name="QUANTITY" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="MEDICALCOMPANYModelStoreContainer">
+    <EntitySet Name="Accountant" EntityType="Self.Accountant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Agent" EntityType="Self.Agent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EXPORT" EntityType="Self.EXPORT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IMPORT" EntityType="Self.IMPORT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="monthRevenue" EntityType="Self.monthRevenue" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUCT" EntityType="Self.PRODUCT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Temp_EXPORT" EntityType="Self.Temp_EXPORT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Temp_IMPORT" EntityType="Self.Temp_IMPORT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="userLogin" EntityType="Self.userLogin" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__EXPORT__AGENT_ID__71D1E811" Association="Self.FK__EXPORT__AGENT_ID__71D1E811">
+      <End Role="Agent" EntitySet="Agent" />
+      <End Role="EXPORT" EntitySet="EXPORT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EXPORT__PRO_ID__70DDC3D8" Association="Self.FK__EXPORT__PRO_ID__70DDC3D8">
+      <End Role="PRODUCT" EntitySet="PRODUCT" />
+      <End Role="EXPORT" EntitySet="EXPORT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IMPORT__PRO_ID__267ABA7A" Association="Self.FK__IMPORT__PRO_ID__267ABA7A">
+      <End Role="PRODUCT" EntitySet="PRODUCT" />
+      <End Role="IMPORT" EntitySet="IMPORT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Temp_EXPO__AGENT__6D0D32F4" Association="Self.FK__Temp_EXPO__AGENT__6D0D32F4">
+      <End Role="Agent" EntitySet="Agent" />
+      <End Role="Temp_EXPORT" EntitySet="Temp_EXPORT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Temp_EXPO__PRO_I__6C190EBB" Association="Self.FK__Temp_EXPO__PRO_I__6C190EBB">
+      <End Role="PRODUCT" EntitySet="PRODUCT" />
+      <End Role="Temp_EXPORT" EntitySet="Temp_EXPORT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Temp_IMPO__PRO_I__29572725" Association="Self.FK__Temp_IMPO__PRO_I__29572725">
+      <End Role="PRODUCT" EntitySet="PRODUCT" />
+      <End Role="Temp_IMPORT" EntitySet="Temp_IMPORT" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

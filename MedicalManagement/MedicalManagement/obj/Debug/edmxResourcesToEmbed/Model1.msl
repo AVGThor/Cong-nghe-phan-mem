@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MEDICALCOMPANYModel1StoreContainer" CdmEntityContainer="MEDICALCOMPANYEntities1">
+    <EntitySetMapping Name="EXPORTs">
+      <EntityTypeMapping TypeName="MEDICALCOMPANYModel1.EXPORT">
+        <MappingFragment StoreEntitySet="EXPORT">
+          <ScalarProperty Name="EXPORT_ID" ColumnName="EXPORT_ID" />
+          <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+          <ScalarProperty Name="PRO_NAME" ColumnName="PRO_NAME" />
+          <ScalarProperty Name="EXPORT_DATE" ColumnName="EXPORT_DATE" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="DELIVERY_STATUS" ColumnName="DELIVERY_STATUS" />
+          <ScalarProperty Name="PAYMENT_STATUS" ColumnName="PAYMENT_STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IMPORTs">
+      <EntityTypeMapping TypeName="MEDICALCOMPANYModel1.IMPORT">
+        <MappingFragment StoreEntitySet="IMPORT">
+          <ScalarProperty Name="IMPORT_ID" ColumnName="IMPORT_ID" />
+          <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+          <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+          <ScalarProperty Name="IMPORT_DATE" ColumnName="IMPORT_DATE" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTs">
+      <EntityTypeMapping TypeName="MEDICALCOMPANYModel1.PRODUCT">
+        <MappingFragment StoreEntitySet="PRODUCT">
+          <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+          <ScalarProperty Name="PRO_NAME" ColumnName="PRO_NAME" />
+          <ScalarProperty Name="SALEPRICE" ColumnName="SALEPRICE" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="IMPORT_ORDER" FunctionName="MEDICALCOMPANYModel1.Store.IMPORT_ORDER" />
+  </EntityContainerMapping>
+</Mapping>

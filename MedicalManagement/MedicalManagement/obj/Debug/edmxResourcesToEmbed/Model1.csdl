@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MEDICALCOMPANYModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="EXPORT">
+    <Key>
+      <PropertyRef Name="EXPORT_ID" />
+    </Key>
+    <Property Name="EXPORT_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PRO_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PRO_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EXPORT_DATE" Type="DateTime" Precision="0" />
+    <Property Name="QUANTITY" Type="Int32" />
+    <Property Name="PRICE" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="DELIVERY_STATUS" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PAYMENT_STATUS" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PRODUCT" Relationship="Self.FK__EXPORT__PRO_ID__29572725" FromRole="EXPORT" ToRole="PRODUCT" />
+  </EntityType>
+  <EntityType Name="IMPORT">
+    <Key>
+      <PropertyRef Name="IMPORT_ID" />
+    </Key>
+    <Property Name="IMPORT_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PRO_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PRODUCT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IMPORT_DATE" Type="DateTime" Precision="0" />
+    <Property Name="PRICE" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="QUANTITY" Type="Int32" />
+    <NavigationProperty Name="PRODUCT" Relationship="Self.FK__IMPORT__PRO_ID__267ABA7A" FromRole="IMPORT" ToRole="PRODUCT" />
+  </EntityType>
+  <EntityType Name="PRODUCT">
+    <Key>
+      <PropertyRef Name="PRO_ID" />
+    </Key>
+    <Property Name="PRO_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PRO_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SALEPRICE" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="QUANTITY" Type="Int32" />
+    <NavigationProperty Name="EXPORTs" Relationship="Self.FK__EXPORT__PRO_ID__29572725" FromRole="PRODUCT" ToRole="EXPORT" />
+    <NavigationProperty Name="IMPORTs" Relationship="Self.FK__IMPORT__PRO_ID__267ABA7A" FromRole="PRODUCT" ToRole="IMPORT" />
+  </EntityType>
+  <Association Name="FK__EXPORT__PRO_ID__29572725">
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
+    <End Role="EXPORT" Type="Self.EXPORT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCT">
+        <PropertyRef Name="PRO_ID" />
+      </Principal>
+      <Dependent Role="EXPORT">
+        <PropertyRef Name="PRO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IMPORT__PRO_ID__267ABA7A">
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
+    <End Role="IMPORT" Type="Self.IMPORT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCT">
+        <PropertyRef Name="PRO_ID" />
+      </Principal>
+      <Dependent Role="IMPORT">
+        <PropertyRef Name="PRO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MEDICALCOMPANYEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="EXPORTs" EntityType="Self.EXPORT" />
+    <EntitySet Name="IMPORTs" EntityType="Self.IMPORT" />
+    <EntitySet Name="PRODUCTs" EntityType="Self.PRODUCT" />
+    <AssociationSet Name="FK__EXPORT__PRO_ID__29572725" Association="Self.FK__EXPORT__PRO_ID__29572725">
+      <End Role="PRODUCT" EntitySet="PRODUCTs" />
+      <End Role="EXPORT" EntitySet="EXPORTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IMPORT__PRO_ID__267ABA7A" Association="Self.FK__IMPORT__PRO_ID__267ABA7A">
+      <End Role="PRODUCT" EntitySet="PRODUCTs" />
+      <End Role="IMPORT" EntitySet="IMPORTs" />
+    </AssociationSet>
+    <FunctionImport Name="IMPORT_ORDER">
+      <Parameter Name="IID" Mode="In" Type="String" />
+      <Parameter Name="Pro_id" Mode="In" Type="String" />
+      <Parameter Name="pro_name" Mode="In" Type="String" />
+      <Parameter Name="IDATE" Mode="In" Type="DateTime" />
+      <Parameter Name="PRICE" Mode="In" Type="Decimal" />
+      <Parameter Name="QUANTITY" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

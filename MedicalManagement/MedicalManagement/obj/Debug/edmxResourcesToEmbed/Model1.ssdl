@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MEDICALCOMPANYModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="EXPORT">
+    <Key>
+      <PropertyRef Name="EXPORT_ID" />
+    </Key>
+    <Property Name="EXPORT_ID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="PRO_ID" Type="varchar" MaxLength="10" />
+    <Property Name="PRO_NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXPORT_DATE" Type="date" />
+    <Property Name="QUANTITY" Type="int" />
+    <Property Name="PRICE" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="DELIVERY_STATUS" Type="nvarchar" MaxLength="30" />
+    <Property Name="PAYMENT_STATUS" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="IMPORT">
+    <Key>
+      <PropertyRef Name="IMPORT_ID" />
+    </Key>
+    <Property Name="IMPORT_ID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="PRO_ID" Type="varchar" MaxLength="10" />
+    <Property Name="PRODUCT_NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="IMPORT_DATE" Type="date" />
+    <Property Name="PRICE" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="QUANTITY" Type="int" />
+  </EntityType>
+  <EntityType Name="PRODUCT">
+    <Key>
+      <PropertyRef Name="PRO_ID" />
+    </Key>
+    <Property Name="PRO_ID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="PRO_NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="SALEPRICE" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="QUANTITY" Type="int" />
+  </EntityType>
+  <Association Name="FK__EXPORT__PRO_ID__29572725">
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
+    <End Role="EXPORT" Type="Self.EXPORT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCT">
+        <PropertyRef Name="PRO_ID" />
+      </Principal>
+      <Dependent Role="EXPORT">
+        <PropertyRef Name="PRO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IMPORT__PRO_ID__267ABA7A">
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
+    <End Role="IMPORT" Type="Self.IMPORT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCT">
+        <PropertyRef Name="PRO_ID" />
+      </Principal>
+      <Dependent Role="IMPORT">
+        <PropertyRef Name="PRO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="IMPORT_ORDER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IID" Type="varchar" Mode="In" />
+    <Parameter Name="Pro_id" Type="varchar" Mode="In" />
+    <Parameter Name="pro_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="IDATE" Type="date" Mode="In" />
+    <Parameter Name="PRICE" Type="decimal" Mode="In" />
+    <Parameter Name="QUANTITY" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="MEDICALCOMPANYModel1StoreContainer">
+    <EntitySet Name="EXPORT" EntityType="Self.EXPORT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IMPORT" EntityType="Self.IMPORT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUCT" EntityType="Self.PRODUCT" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__EXPORT__PRO_ID__29572725" Association="Self.FK__EXPORT__PRO_ID__29572725">
+      <End Role="PRODUCT" EntitySet="PRODUCT" />
+      <End Role="EXPORT" EntitySet="EXPORT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IMPORT__PRO_ID__267ABA7A" Association="Self.FK__IMPORT__PRO_ID__267ABA7A">
+      <End Role="PRODUCT" EntitySet="PRODUCT" />
+      <End Role="IMPORT" EntitySet="IMPORT" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
